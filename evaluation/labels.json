@@ -1,0 +1,1237 @@
+{
+  "evt_3898ee6f": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_0a47cbcf": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_903f3afb": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_c6249534": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_a01d7076": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_b5b5bb79": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_7df8d833": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_50d60845": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_05bcac7a": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_558e29a6": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_bb03c82e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_75b9f3ba": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_3711ed4d": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_d7a649a6": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_e02b3556": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_e5ba07b3": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_b0d976bd": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_ec475152": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_f8e0577d": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_eae59159": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_27466ea2": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_edb96097": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_a16639b5": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_05f95e49": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_08c77528": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_4fe072c6": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_5f95e74f": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_24f7706e": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_b6ef07ba": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_041733fa": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_56a508fb": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_271861ea": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_4e16d36c": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_4e6923eb": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_efbc52eb": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_c791c659": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_4ba6173d": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_6e464b46": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_1eb577fc": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_0fc5c32e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_25ca51d9": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_27484983": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_82a715e1": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_3af8e410": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_b035715a": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_d33bdf7e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_febd9bf3": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_9b5c4f6a": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_23d9fad9": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_41798261": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_8103182f": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_a53dc7ec": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_2d3dcedd": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_785ae670": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_d530025d": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_6951fae5": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_910eec0e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f57c8f8f": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_b645e6bc": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_8e3d64c0": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_7d70d8bb": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_60de9297": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_87b5ded4": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_e40b1ae6": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_19a4ab9e": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_7317f1c2": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_39793daf": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_ecfb83fc": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_a5da0b5f": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_6fcbd3a0": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_5c5098b3": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_d3f51116": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_d0cb46b1": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_81c27bc8": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_35de532f": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_ba813eee": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_cd7188a3": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_dd4b8443": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_9862f54a": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_04d5aad5": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_51974851": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_08eed77d": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_3a7e68cd": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_7d560cdf": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_e70d45dd": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_111e34e7": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_a59480fe": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_78cc5d32": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_c46730ab": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_65d0b09b": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_f55d4e2a": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_e17812b1": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_33eeb6aa": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_b2e4627d": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_494b0617": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_cabf2eb0": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_07dd75b4": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_9fe8a059": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_6b8c878e": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_bad3986a": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_0449a4b1": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_8d99aefc": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_508755e6": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_0efac132": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_049f678d": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_74621ec3": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f8a2e9f3": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_125fb872": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_c960f26e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_8cbb4bc8": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_630dc6e2": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_7b10f0dc": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_721a8b68": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_a1b0e069": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_2e166ef4": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_babb3e35": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_73ea5283": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_f85f515c": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_3e99563e": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_d1ab8ddc": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_cc8faabf": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_a5c501a1": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_02d1968c": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_fc0edf5a": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_f6e0831b": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_bc52c3e4": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_86df6415": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_4267f090": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_3d80fb6d": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_5dd98b92": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_90ccd466": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_88ad8bf2": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_fb77c7c7": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_8abcdce9": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_9768f688": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_7740ea85": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_30db23be": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_33d4bb79": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_e3c301e6": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_9c2c4780": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_5f905c3d": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_3df09fcd": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_faaf2e6a": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_d0fd55e2": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_6162022e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_ad507566": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f13dfa8b": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_6f6b10d9": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_fb83cffd": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_3c23d57e": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_6fcaa09c": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_ac07d67e": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_2945b418": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_e383630c": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_f5370ac5": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f90b291a": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_4aff88af": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_7f9a9bdc": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_932187a7": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_4c0ecea6": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_b9b602ef": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_d6016d6a": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_cc483704": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_6386db32": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_e4a6f412": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_b52d08a8": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_54e13338": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_28ea5c1d": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_0631ca0a": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_474923c5": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_2140cf58": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_666b4e9c": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_cc00a170": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_6a27c1ba": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_16b79a7b": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_263ef941": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_bdb1b3ba": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_28ea75bc": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_19acb92d": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_a70bff78": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_d3f5a997": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_1f48ef16": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_e9f676d1": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f1b65d65": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_797eb7e3": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_4af0a0a7": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_ffc68257": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_45531c70": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_3c2e9d8b": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_4136e501": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_0329bddb": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_163134a5": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_68708977": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_21417793": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_8088281b": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_5dabc966": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_9d5a9180": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_b3f3f7a6": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_d527e95e": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_99fbb91d": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_a681c92a": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_ab3050aa": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_ff7250f1": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_db6845d3": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_d1facb80": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_f5bc24bc": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_be8c30e3": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_61ab8ada": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_db242dea": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_3f08fa95": {
+    "failure_type": "unknown",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_cf175647": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_ad31b0dd": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_d8390c8c": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_354dce6f": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_a9351937": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_63108b7f": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_fbcdd3a5": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_3f868b17": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_051b0a15": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_edf52a82": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_efbb0f97": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_b806f440": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_e989feed": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_e7a1b112": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_45fcbe86": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_ac88b502": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_724ae2e6": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f9fae71e": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_4a443c24": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_57db9617": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "AUTO",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_796e04d3": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_9f6b983f": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f1c98198": {
+    "failure_type": "insufficient_funds",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "insufficient_funds"
+  },
+  "evt_46dec09e": {
+    "failure_type": "already_successful",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  },
+  "evt_82853935": {
+    "failure_type": "retry_limit",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "unknown"
+  },
+  "evt_e34e248c": {
+    "failure_type": "mandate_inactive",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "mandate_inactive"
+  },
+  "evt_5cd18627": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_e8e169cd": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_18216f9b": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_34d0bac4": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_1920000b": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_7307004d": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_40d46e92": {
+    "failure_type": "otp_or_authentication_issue",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "otp_or_authentication_issue"
+  },
+  "evt_5ff4eaaf": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_0b47ffd7": {
+    "failure_type": "temporary_failure",
+    "expected_policy": "AUTO",
+    "expected_bucket": "temporary_failure"
+  },
+  "evt_f41b8b36": {
+    "failure_type": "payment_credential_expired",
+    "expected_policy": "QUEUE_FOR_REVIEW",
+    "expected_bucket": "payment_credential_expired"
+  },
+  "evt_69e2e5f5": {
+    "failure_type": "customer_opted_out",
+    "expected_policy": "BLOCKED",
+    "expected_bucket": "unknown"
+  }
+}
