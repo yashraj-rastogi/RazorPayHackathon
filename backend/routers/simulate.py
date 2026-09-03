@@ -101,3 +101,66 @@ async def simulate_failure(req: SimulateRequest):
         return {"simulation": "gemini_timeout", "result": result}
 
     return {"simulation": req.type, "status": "not_yet_implemented"}
+
+
+@router.post("/pitch-scenario")
+async def simulate_pitch_scenario():
+    """
+    1-Click Pitch Demo Endpoint for Hackathon Judges.
+    Executes the entire end-to-end RevGuard lifecycle in one orchestrated flow:
+    1. Ingests a real failed recurring UPI Autopay mandate (Rs. 2,499).
+    2. Runs AI/Deterministic diagnosis.
+    3. Evaluates bounded financial policy (AUTO).
+    4. Creates a real Razorpay payment link & dispatches WhatsApp message.
+    5. Returns all telemetric state for live cockpit animation.
+    """
+    from backend.models.event import NormalizedRevenueEvent
+    from backend.services.ingestion import ingest_event
+    from backend.services.recovery import execute_recovery
+    import uuid
+
+    event_id = f"evt_pitch_{uuid.uuid4().hex[:8]}"
+    event = NormalizedRevenueEvent(
+        event_id=event_id,
+        merchant_id="merch_saas_prime",
+        customer_id="cust_pro_vip",
+        subscription_id="sub_annual_pro",
+        amount=249900,  # Rs. 2,499
+        currency="INR",
+        reason="BANK_TIMEOUT",
+        gateway_message="NPCI UPI Autopay mandate debit timed out at destination issuer CBS core.",
+        attempt_count=1,
+    )
+
+    # 1. Ingest & Diagnose & Policy
+    ingest_result = ingest_event(event)
+    case_id = ingest_result["case_id"]
+
+    # 2. If policy queued for review, approve it for demo execution
+    from backend.db.firestore import update_document, get_document
+    case_doc = get_document("recovery_cases", case_id) or {}
+    if case_doc.get("policy", {}).get("decision") != "AUTO":
+        update_document("recovery_cases", case_id, {"policy.decision": "AUTO", "status": "ACTION_PENDING"})
+
+    # 3. Execute Recovery (Razorpay Link + WhatsApp Outreach)
+    recovery_result = execute_recovery(case_id)
+
+    return {
+        "status": "success",
+        "case_id": case_id,
+        "event": {
+            "event_id": event.event_id,
+            "amount": event.amount,
+            "currency": "INR",
+            "reason": event.reason,
+            "gateway_message": event.gateway_message,
+        },
+        "diagnosis": ingest_result.get("case", {}).get("diagnosis", {}),
+        "policy": ingest_result.get("case", {}).get("policy", {}),
+        "recovery": {
+            "action_id": recovery_result.get("action_id"),
+            "provider_reference": recovery_result.get("provider_reference"),
+            "recovery_url": recovery_result.get("recovery_url"),
+            "status": recovery_result.get("status"),
+        }
+    }

@@ -37,6 +37,9 @@ export const api = {
     method: 'POST',
     body: JSON.stringify({ type, case_id }),
   }),
+  simulatePitchScenario: () => apiFetch('/api/v1/simulate/pitch-scenario', {
+    method: 'POST',
+  }),
 };
 
 // Formatting helpers

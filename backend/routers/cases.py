@@ -75,9 +75,15 @@ async def get_case(case_id: str):
     # Enrich with event
     event = get_document("revenue_events", case.get("event_id", "")) if case.get("event_id") else None
 
+    # Smart Dunning recommendation based on root cause bucket
+    from backend.services.dunning import get_dunning_recommendation
+    bucket = case.get("diagnosis", {}).get("bucket", "unknown") if case.get("diagnosis") else "unknown"
+    dunning = get_dunning_recommendation(bucket, case.get("amount", 0))
+
     return {
         "case": case,
         "event": event,
+        "dunning_recommendation": dunning,
     }
 
 

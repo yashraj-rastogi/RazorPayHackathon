@@ -413,6 +413,51 @@ export default function CaseDetail() {
             </div>
           </div>
 
+          {/* Smart Dunning Engine Recommendation */}
+          {detail.dunning_recommendation && (
+            <div className="card" style={{ borderLeft: '6px solid var(--color-accent)' }}>
+              <div className="section-title">
+                <span>⏱</span>
+                <span>Smart Dunning // Optimal Debit Window</span>
+                <span className="chip chip-active" style={{ marginLeft: 'auto', fontSize: '10px' }}>
+                  {detail.dunning_recommendation.tag}
+                </span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div style={{
+                  backgroundColor: 'var(--color-bg-elevated)',
+                  border: '2px solid var(--color-border)',
+                  padding: '12px',
+                  boxShadow: 'var(--shadow-sm)'
+                }}>
+                  <div className="stat-label" style={{ marginBottom: 4 }}>RECOMMENDED RETRY WINDOW</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: '800', color: 'var(--color-dark)' }}>
+                    {detail.dunning_recommendation.window}
+                  </div>
+                  <div style={{ fontSize: '12px', color: '#1B5E20', fontWeight: '700', marginTop: 4 }}>
+                    📈 {detail.dunning_recommendation.confidence_lift}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="stat-label" style={{ marginBottom: 4 }}>EXECUTION PROTOCOL</div>
+                  <div style={{ fontSize: '13px', color: 'var(--color-text-primary)' }}>
+                    {detail.dunning_recommendation.protocol}
+                  </div>
+                </div>
+
+                <div style={{
+                  fontSize: '12px',
+                  color: 'var(--color-text-muted)',
+                  borderTop: '1px dashed var(--color-border)',
+                  paddingTop: '8px'
+                }}>
+                  <strong>Banking Rationale (NPCI/RBI):</strong> {detail.dunning_recommendation.rationale}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Policy Verification Checklist */}
           <div className="card">
             <PolicyChecklist policy={policy} />

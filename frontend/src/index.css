@@ -1078,3 +1078,56 @@ tbody td {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ============================================================
+   MODALS & OVERLAYS (NEO-BRUTALIST SPEC)
+   ============================================================ */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-4);
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.modal-card {
+  background-color: var(--color-bg-base);
+  border: var(--border-thick);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-6);
+  position: relative;
+}
+
+.pitch-step-card {
+  background-color: var(--color-bg-surface);
+  border: 2px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all var(--transition-fast);
+}
+
+.pitch-step-card.active {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  background-color: #FFFDF5;
+}
+
+.pitch-step-card.completed {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.05);
+}
