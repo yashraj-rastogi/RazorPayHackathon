@@ -176,13 +176,18 @@ export default function CaseDetail() {
   const [activeTab, setActiveTab] = useState('overview');
 
   const load = () => {
-    Promise.all([
-      api.getCase(caseId),
-      api.getCaseAudit(caseId),
-    ]).then(([d, a]) => {
-      setDetail(d);
-      setAudit(a);
-    }).catch(console.error)
+    setLoading(true);
+    api.getCase(caseId)
+      .then(d => {
+        setDetail(d);
+        api.getCaseAudit(caseId)
+          .then(setAudit)
+          .catch(() => setAudit({ events: [] }));
+      })
+      .catch(err => {
+        console.error(err);
+        setDetail(null);
+      })
       .finally(() => setLoading(false));
   };
 

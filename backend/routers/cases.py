@@ -183,12 +183,20 @@ async def reject(case_id: str, body: RejectRequest):
 @router.get("/{case_id}/audit")
 async def get_audit(case_id: str):
     """Return the append-only audit trail for a case."""
-    entries = query_collection(
-        "audit_logs",
-        filters=[("case_id", "==", case_id)],
-        order_by="timestamp",
-        limit=200,
-    )
+    try:
+        entries = query_collection(
+            "audit_logs",
+            filters=[("case_id", "==", case_id)],
+            order_by="timestamp",
+            limit=200,
+        )
+    except Exception:
+        entries = query_collection(
+            "audit_logs",
+            filters=[("case_id", "==", case_id)],
+            limit=200,
+        )
+        entries.sort(key=lambda e: e.get("timestamp") or "")
     return {"case_id": case_id, "events": entries}
 
 
@@ -198,13 +206,22 @@ async def get_message(case_id: str):
     Preview the stored customer message for this case.
     Does NOT re-call Gemini — renders stored text only.
     """
-    actions = query_collection(
-        "recovery_actions",
-        filters=[("case_id", "==", case_id)],
-        order_by="created_at",
-        descending=True,
-        limit=1,
-    )
+    try:
+        actions = query_collection(
+            "recovery_actions",
+            filters=[("case_id", "==", case_id)],
+            order_by="created_at",
+            descending=True,
+            limit=1,
+        )
+    except Exception:
+        actions = query_collection(
+            "recovery_actions",
+            filters=[("case_id", "==", case_id)],
+            limit=10,
+        )
+        actions.sort(key=lambda a: a.get("created_at") or "", reverse=True)
+        actions = actions[:1]
     if not actions or not actions[0].get("customer_message"):
         raise HTTPException(status_code=404, detail="No customer message found for this case.")
 
