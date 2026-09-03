@@ -21,6 +21,8 @@ FIRESTORE_PROJECT_ID: str = os.getenv("FIRESTORE_PROJECT_ID", "")
 MESSAGING_PROVIDER: str = os.getenv("MESSAGING_PROVIDER", "mock")
 TWILIO_ACCOUNT_SID: str = os.getenv("TWILIO_ACCOUNT_SID", "")
 TWILIO_AUTH_TOKEN: str = os.getenv("TWILIO_AUTH_TOKEN", "")
+TWILIO_WHATSAPP_NUMBER: str = os.getenv("TWILIO_WHATSAPP_NUMBER", "whatsapp:+14155238886")
+TWILIO_TEST_PHONE_OVERRIDE: str = os.getenv("TWILIO_TEST_PHONE_OVERRIDE", "")
 
 # ─── Policy Thresholds ───────────────────────────────────────────
 # Amount above which AUTO is forbidden; cases go to QUEUE_FOR_REVIEW
