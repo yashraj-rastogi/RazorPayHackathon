@@ -1,0 +1,27 @@
+# Environments & Secrets
+.env
+.env.local
+*.env
+serviceaccount*.json
+*-firebase-adminsdk-*.json
+*adminsdk*.json
+*.json.secret
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

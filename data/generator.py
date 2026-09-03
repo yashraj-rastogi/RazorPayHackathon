@@ -74,10 +74,10 @@ def pick_attempt_count(rng: random.Random, failure_type: str) -> int:
         return rng.randint(1, 3)
 
 
-def build_event(idx: int, failure_type: str, reason_code: str, gateway_messages,
+def build_event(idx: int, seed: int, failure_type: str, reason_code: str, gateway_messages,
                 rng: random.Random, is_duplicate: bool = False) -> dict:
     """Build one NormalizedRevenueEvent dict."""
-    seed_str = f"{DATASET_VERSION}-{idx}"
+    seed_str = f"{DATASET_VERSION}-{seed}-{idx}"
     event_id = f"evt_{hashlib.sha256(seed_str.encode()).hexdigest()[:8]}"
 
     merchant_id = rng.choice(MERCHANT_IDS)
@@ -167,7 +167,7 @@ def generate(seed: int, count: int) -> tuple[list[dict], dict]:
 
     for i, (failure_type, reason_code, gateway_messages) in enumerate(pool):
         is_dup = i in duplicate_sources
-        event = build_event(i, failure_type, reason_code, gateway_messages, rng, is_dup)
+        event = build_event(i, seed, failure_type, reason_code, gateway_messages, rng, is_dup)
 
         # For duplicates, reuse source event_id
         if is_dup:

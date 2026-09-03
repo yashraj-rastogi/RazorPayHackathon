@@ -37,7 +37,7 @@ def recoverability_from_probability(prob: float) -> RecoverabilityLevel:
         return RecoverabilityLevel.NONE
 
 
-def calculate_recovery_probability(case: RecoveryCase) -> float:
+def calculate_recovery_probability(case: RecoveryCase, attempt_count: int = 1) -> float:
     """
     Deterministic probability estimate.
     Documented so judges and reviewers can verify the math.
@@ -49,7 +49,7 @@ def calculate_recovery_probability(case: RecoveryCase) -> float:
     base = BUCKET_BASE_PROBABILITY.get(bucket, 0.40)
 
     # Retry penalty: each additional attempt reduces probability
-    retry_penalty = RETRY_PENALTY_PER_ATTEMPT * max(0, case.attempt_count - 1) if hasattr(case, 'attempt_count') else 0.0
+    retry_penalty = RETRY_PENALTY_PER_ATTEMPT * max(0, attempt_count - 1)
 
     # Amount penalty: high-value payments are harder to recover via a link
     amount_penalty = AMOUNT_ABOVE_THRESHOLD_PENALTY if case.amount > AMOUNT_PENALTY_THRESHOLD else 0.0
@@ -62,9 +62,7 @@ def score(case: RecoveryCase, attempt_count: int = 1) -> RecoveryCase:
     """
     Mutate and return the case with recovery_probability, recoverability, and priority_score filled.
     """
-    # Temporarily attach attempt_count for scoring
-    case.attempt_count = attempt_count  # type: ignore[attr-defined]
-    prob = calculate_recovery_probability(case)
+    prob = calculate_recovery_probability(case, attempt_count=attempt_count)
     case.recovery_probability = prob
     case.recoverability = recoverability_from_probability(prob)
     # priority_score = amount_in_rupees * recovery_probability (integer)

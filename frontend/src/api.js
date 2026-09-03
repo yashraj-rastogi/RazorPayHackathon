@@ -55,28 +55,28 @@ export function formatDate(ts) {
 
 export function policyBadgeClass(decision) {
   switch (decision?.toUpperCase()) {
-    case 'AUTO': return 'badge badge-auto';
-    case 'QUEUE_FOR_REVIEW': return 'badge badge-review';
-    case 'BLOCKED': return 'badge badge-blocked';
-    default: return 'badge';
+    case 'AUTO': return 'chip chip-auto';
+    case 'QUEUE_FOR_REVIEW': return 'chip chip-review';
+    case 'BLOCKED': return 'chip chip-blocked';
+    default: return 'chip';
   }
 }
 
 export function statusBadgeClass(status) {
   switch (status?.toUpperCase()) {
-    case 'RECOVERED': return 'badge badge-recovered';
+    case 'RECOVERED': return 'chip chip-recovered';
     case 'ACTION_PENDING':
     case 'ACTION_SENT':
-    case 'RECOVERY_PENDING': return 'badge badge-pending';
-    case 'QUEUED_FOR_REVIEW': return 'badge badge-review';
+    case 'RECOVERY_PENDING': return 'chip chip-pending';
+    case 'QUEUED_FOR_REVIEW': return 'chip chip-review';
     case 'CLOSED':
-    case 'REJECTED': return 'badge badge-blocked';
-    default: return 'badge badge-pending';
+    case 'REJECTED': return 'chip chip-blocked';
+    default: return 'chip chip-pending';
   }
 }
 
 export function confidenceColor(conf) {
-  if (conf >= 0.85) return 'var(--accent-green)';
-  if (conf >= 0.60) return 'var(--accent-amber)';
-  return 'var(--accent-red)';
+  if (conf >= 0.85) return 'var(--color-success)';
+  if (conf >= 0.60) return 'var(--color-accent)';
+  return 'var(--color-danger)';
 }

@@ -83,6 +83,7 @@ class RecoveryCase(BaseModel):
     priority_score: Optional[int] = None
     diagnosis: Optional[DiagnosisResult] = None
     policy: Optional[PolicyDecision] = None
+    attempt_count: Optional[int] = 1
     status: CaseStatus = CaseStatus.NEW
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None

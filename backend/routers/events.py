@@ -66,6 +66,8 @@ async def seed_dataset(req: SeedRequest):
                 else:
                     created += 1
             except Exception as exc:
+                import logging
+                logging.getLogger(__name__).error(f"Error seeding event {e_dict.get('event_id')}: {exc}")
                 errors += 1
 
         return {

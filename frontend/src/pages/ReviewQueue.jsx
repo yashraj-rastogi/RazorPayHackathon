@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, formatRupees, formatDate, confidenceColor } from '../api';
+import { api, formatRupees, confidenceColor } from '../api';
 
 export default function ReviewQueue() {
   const navigate = useNavigate();
@@ -21,45 +21,57 @@ export default function ReviewQueue() {
   const setMsg = (caseId, msg) => setActionMsgs(p => ({ ...p, [caseId]: msg }));
 
   const handleApprove = async (caseId) => {
-    setMsg(caseId, 'Approving...');
+    setMsg(caseId, 'APPROVING...');
     try {
       await api.approveCase(caseId);
-      setMsg(caseId, '✓ Approved');
-      setTimeout(load, 1500);
+      setMsg(caseId, '✓ APPROVED & RECOVERY TRIGGERED');
+      setTimeout(load, 1200);
     } catch (e) {
       setMsg(caseId, '✗ ' + e.message);
     }
   };
 
   const handleReject = async (caseId) => {
-    setMsg(caseId, 'Rejecting...');
+    setMsg(caseId, 'REJECTING...');
     try {
-      await api.rejectCase(caseId, 'Rejected from review queue');
-      setMsg(caseId, '✓ Rejected');
-      setTimeout(load, 1500);
+      await api.rejectCase(caseId, 'Rejected by operator from review queue');
+      setMsg(caseId, '✓ CASE REJECTED & SUPPRESSED');
+      setTimeout(load, 1200);
     } catch (e) {
       setMsg(caseId, '✗ ' + e.message);
     }
   };
 
-  if (loading) return <div className="loading"><div className="spinner" /> Loading review queue...</div>;
+  if (loading) {
+    return (
+      <div className="loading">
+        <div className="spinner" />
+        <span>READING OPERATOR REVIEW QUEUE...</span>
+      </div>
+    );
+  }
 
   return (
     <div>
       <div className="page-header">
-        <h2>Review Queue</h2>
-        <p>{cases.length} case{cases.length !== 1 ? 's' : ''} waiting for human decision</p>
+        <h2>Operator Review Intercept Queue</h2>
+        <p>Incidents exceeding risk thresholds, retry limits, or AI ambiguity bounds requiring human judgment</p>
       </div>
 
       {cases.length === 0 ? (
         <div className="card">
           <div className="empty-state">
-            <p style={{ fontSize: 32, marginBottom: 12 }}>✅</p>
-            <p>No cases in review queue. All clear!</p>
+            <p style={{ fontSize: '36px', marginBottom: '8px' }}>🛡</p>
+            <p style={{ fontFamily: 'var(--font-heading)', fontWeight: '700', fontSize: '16px' }}>
+              REVIEW QUEUE CLEAR
+            </p>
+            <p style={{ fontSize: '13px', marginTop: 4 }}>
+              All automated policies operating within nominal confidence thresholds.
+            </p>
           </div>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {cases.map(c => {
             const diag = c.diagnosis || {};
             const policy = c.policy || {};
@@ -67,49 +79,112 @@ export default function ReviewQueue() {
             const msg = actionMsgs[c.case_id];
 
             return (
-              <div key={c.case_id} className="card" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 20, alignItems: 'center' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto auto', gap: 24, alignItems: 'center' }}>
+              <div
+                key={c.case_id}
+                className="card"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr auto',
+                  gap: 20,
+                  alignItems: 'center',
+                  borderLeft: '6px solid var(--color-accent)'
+                }}
+              >
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 20, alignItems: 'center' }}>
+                  {/* Amount */}
                   <div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>Amount</div>
-                    <div style={{ fontSize: 20, fontWeight: 700 }}>{formatRupees(c.amount)}</div>
-                  </div>
-
-                  <div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>Root Cause</div>
-                    <div style={{ fontSize: 13, fontWeight: 500 }}>{diag.bucket?.replace(/_/g, ' ') || '—'}</div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>via {diag.method}</div>
-                  </div>
-
-                  <div style={{ minWidth: 120 }}>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 6 }}>Confidence: {(conf * 100).toFixed(0)}%</div>
-                    <div className="confidence-bar-track" style={{ height: 6, borderRadius: 3 }}>
-                      <div className="confidence-bar-fill" style={{ width: `${(conf * 100).toFixed(0)}%`, '--fill-color': confidenceColor(conf), height: '100%' }} />
+                    <div className="stat-label">INCIDENT VALUE</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', fontWeight: '800', color: 'var(--color-dark)' }}>
+                      {formatRupees(c.amount)}
+                    </div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--color-text-secondary)', marginTop: 2 }}>
+                      REF: {c.case_id}
                     </div>
                   </div>
 
+                  {/* Diagnosis */}
                   <div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>Why review?</div>
-                    <div style={{ fontSize: 12, color: 'var(--accent-amber)', maxWidth: 300 }}>
-                      {(policy.reasons || []).slice(0, 2).join(' · ')}
+                    <div className="stat-label">DIAGNOSIS VERDICT</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--color-dark)' }}>
+                      {diag.bucket?.replace(/_/g, ' ') || '—'}
+                    </div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--color-text-muted)', marginTop: 2 }}>
+                      METHOD: {diag.method?.toUpperCase()}
+                    </div>
+                  </div>
+
+                  {/* Confidence Bar */}
+                  <div style={{ minWidth: 140 }}>
+                    <div className="stat-label" style={{ marginBottom: 4 }}>
+                      CONFIDENCE: {(conf * 100).toFixed(0)}%
+                    </div>
+                    <div className="confidence-bar-track" style={{ height: 8 }}>
+                      <div
+                        className="confidence-bar-fill"
+                        style={{
+                          width: `${(conf * 100).toFixed(0)}%`,
+                          '--fill-color': confidenceColor(conf),
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Reason for Escalation */}
+                  <div>
+                    <div className="stat-label">ESCALATION TRIGGER</div>
+                    <div style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '11px',
+                      fontWeight: '600',
+                      color: '#92400E',
+                      backgroundColor: 'rgba(250, 185, 91, 0.25)',
+                      padding: '4px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      border: '1px solid #D97706',
+                      marginTop: 2
+                    }}>
+                      {(policy.reasons || []).slice(0, 1).join('') || 'Threshold exceeded'}
                     </div>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
+                {/* Actions */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end', minWidth: 150 }}>
                   {msg ? (
-                    <span style={{ fontSize: 12, color: msg.startsWith('✓') ? 'var(--accent-green)' : msg.startsWith('✗') ? 'var(--accent-red)' : 'var(--text-muted)' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '11px',
+                      fontWeight: '700',
+                      padding: '6px 10px',
+                      border: '2px solid var(--color-border)',
+                      backgroundColor: msg.startsWith('✓') ? 'rgba(76, 175, 80, 0.15)' : 'rgba(229, 57, 53, 0.15)',
+                      color: msg.startsWith('✓') ? '#1B5E20' : '#B71C1C',
+                      textAlign: 'center'
+                    }}>
                       {msg}
                     </span>
                   ) : (
                     <>
-                      <button className="btn btn-success" style={{ fontSize: 12, width: 120 }} onClick={() => handleApprove(c.case_id)}>
-                        ✓ Approve
+                      <button
+                        className="btn btn-success"
+                        style={{ fontSize: '11px', width: '100%' }}
+                        onClick={() => handleApprove(c.case_id)}
+                      >
+                        ✓ APPROVE RECOVERY
                       </button>
-                      <button className="btn btn-danger" style={{ fontSize: 12, width: 120 }} onClick={() => handleReject(c.case_id)}>
-                        ✗ Reject
+                      <button
+                        className="btn btn-danger"
+                        style={{ fontSize: '11px', width: '100%' }}
+                        onClick={() => handleReject(c.case_id)}
+                      >
+                        ✗ SUPPRESS / BLOCK
                       </button>
-                      <button className="btn btn-ghost" style={{ fontSize: 12, width: 120 }} onClick={() => navigate(`/cases/${c.case_id}`)}>
-                        View Detail
+                      <button
+                        className="btn btn-ghost"
+                        style={{ fontSize: '11px', width: '100%' }}
+                        onClick={() => navigate(`/cases/${c.case_id}`)}
+                      >
+                        INSPECT TELEMETRY
                       </button>
                     </>
                   )}
