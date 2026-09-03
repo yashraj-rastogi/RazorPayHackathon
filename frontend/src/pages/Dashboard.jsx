@@ -25,6 +25,10 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [seeding, setSeeding] = useState(false);
   const [seedMsg, setSeedMsg] = useState('');
+  const [pitchOpen, setPitchOpen] = useState(false);
+  const [pitchStep, setPitchStep] = useState(0);
+  const [pitchData, setPitchData] = useState(null);
+  const [pitchRunning, setPitchRunning] = useState(false);
 
   const load = () => {
     setLoading(true);
@@ -58,11 +62,6 @@ export default function Dashboard() {
       </div>
     );
   }
-
-  const [pitchOpen, setPitchOpen] = useState(false);
-  const [pitchStep, setPitchStep] = useState(0);
-  const [pitchData, setPitchData] = useState(null);
-  const [pitchRunning, setPitchRunning] = useState(false);
 
   const handleRunPitchDemo = async () => {
     setPitchOpen(true);
