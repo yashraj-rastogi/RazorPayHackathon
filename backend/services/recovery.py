@@ -100,12 +100,14 @@ def execute_recovery(case_id: str) -> dict:
     # 4. Load customer
     customer_doc = get_document("customers", case.customer_id) or {}
     from backend.models.customer import Customer
+    from backend import config
+    default_phone = config.TWILIO_TEST_PHONE_OVERRIDE or "+919876543210"
     customer = Customer(
         customer_id=case.customer_id,
         merchant_id=case.merchant_id,
         name=customer_doc.get("name", "Valued Customer"),
-        phone=customer_doc.get("phone", ""),
-        email=customer_doc.get("email", ""),
+        phone=customer_doc.get("phone") or default_phone,
+        email=customer_doc.get("email", "customer@example.com"),
         language_pref=customer_doc.get("language_pref", "english"),
         whatsapp_opt_in=customer_doc.get("whatsapp_opt_in", True),
     )
@@ -226,16 +228,18 @@ def execute_recovery(case_id: str) -> dict:
     })
 
     # 8. Send message
-    if customer.whatsapp_opt_in and customer.phone:
+    send_phone = customer.phone or config.TWILIO_TEST_PHONE_OVERRIDE
+    if customer.whatsapp_opt_in and send_phone:
         try:
             from backend.providers.messaging_mock import get_messaging_provider
             messaging = get_messaging_provider()
+            logger.info("Dispatching recovery message to phone: %s via %s", send_phone, config.MESSAGING_PROVIDER)
             delivery = messaging.send(
-                phone=customer.phone,
+                phone=send_phone,
                 message=customer_message.message,
                 case_id=case_id,
             )
-            customer_message.sent = True
+            customer_message.sent = (delivery.status == "delivered")
             customer_message.sent_at = now_utc()
             customer_message.provider_reference = delivery.provider_reference
 
