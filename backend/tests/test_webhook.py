@@ -87,7 +87,8 @@ class TestWebhookSignature:
 class TestPaymentLinkPaid:
     def test_unknown_plink_returns_200_no_crash(self, client):
         """Unknown plink ID → warning logged, 200 returned, no crash."""
-        with patch("backend.db.firestore.query_collection", return_value=[]):
+        with patch("backend.routers.webhooks._verify_signature", return_value=True), \
+             patch("backend.db.firestore.query_collection", return_value=[]):
             payload = json.dumps(make_payload("plink_unknown_999")).encode()
             response = client.post(
                 "/api/v1/webhooks/razorpay",
@@ -108,16 +109,17 @@ class TestPaymentLinkPaid:
         mock_case = {"status": "ACTION_SENT", "case_id": "case_001"}
 
         # Patch at the router module level (where the names are resolved)
-        with patch("backend.routers.webhooks.query_collection", return_value=[mock_action]):
-            with patch("backend.routers.webhooks.update_document") as mock_update:
-                with patch("backend.db.firestore.get_document", return_value=mock_case):
-                    with patch("backend.services.audit.write_audit"):
-                        payload = json.dumps(make_payload("plink_001")).encode()
-                        response = client.post(
-                            "/api/v1/webhooks/razorpay",
-                            content=payload,
-                            headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
-                        )
+        with patch("backend.routers.webhooks._verify_signature", return_value=True), \
+             patch("backend.routers.webhooks.query_collection", return_value=[mock_action]), \
+             patch("backend.routers.webhooks.update_document") as mock_update, \
+             patch("backend.db.firestore.get_document", return_value=mock_case), \
+             patch("backend.services.audit.write_audit"):
+            payload = json.dumps(make_payload("plink_001")).encode()
+            response = client.post(
+                "/api/v1/webhooks/razorpay",
+                content=payload,
+                headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
+            )
         assert response.status_code == 200
         # update_document should have been called to mark case RECOVERED
         assert mock_update.called
@@ -133,25 +135,27 @@ class TestPaymentLinkPaid:
         }
         mock_case = {"status": "RECOVERED", "case_id": "case_001"}
 
-        with patch("backend.db.firestore.query_collection", return_value=[mock_action]):
-            with patch("backend.db.firestore.get_document", return_value=mock_case):
-                with patch("backend.db.firestore.update_document") as mock_update:
-                    payload = json.dumps(make_payload("plink_001")).encode()
-                    response = client.post(
-                        "/api/v1/webhooks/razorpay",
-                        content=payload,
-                        headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
-                    )
+        with patch("backend.routers.webhooks._verify_signature", return_value=True), \
+             patch("backend.db.firestore.query_collection", return_value=[mock_action]), \
+             patch("backend.db.firestore.get_document", return_value=mock_case), \
+             patch("backend.db.firestore.update_document") as mock_update:
+            payload = json.dumps(make_payload("plink_001")).encode()
+            response = client.post(
+                "/api/v1/webhooks/razorpay",
+                content=payload,
+                headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
+            )
         assert response.status_code == 200
         # Should NOT update again — idempotent
         mock_update.assert_not_called()
 
     def test_unrelated_event_type_returns_200(self, client):
         """Unknown event type → 200 returned, no crash."""
-        payload = json.dumps({"event": "subscription.charged", "payload": {}}).encode()
-        response = client.post(
-            "/api/v1/webhooks/razorpay",
-            content=payload,
-            headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
-        )
+        with patch("backend.routers.webhooks._verify_signature", return_value=True):
+            payload = json.dumps({"event": "subscription.charged", "payload": {}}).encode()
+            response = client.post(
+                "/api/v1/webhooks/razorpay",
+                content=payload,
+                headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
+            )
         assert response.status_code == 200

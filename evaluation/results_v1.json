@@ -1,0 +1,4002 @@
+{
+  "metrics": {
+    "run_id": "run_60e39599",
+    "dataset_version": "v1",
+    "seed": 42,
+    "records_processed": 250,
+    "errors": 0,
+    "recoverable_cases": 209,
+    "auto_count": 135,
+    "review_count": 74,
+    "blocked_count": 41,
+    "recovered_revenue": 37202900,
+    "total_revenue_at_risk": 155001100,
+    "recovery_rate": 0.646,
+    "automation_rate": 0.54,
+    "diagnosis_accuracy": 0.904,
+    "labeled_cases": 250,
+    "correct_policy_labels": 226,
+    "created_at": "2026-09-03T17:52:23.170303+00:00"
+  },
+  "results": [
+    {
+      "event_id": "evt_3898ee6f",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 61900,
+      "priority_score": 451,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.619 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_0a47cbcf",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 279000,
+      "priority_score": 2455,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.2,790 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_903f3afb",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 45400,
+      "priority_score": 204,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_c6249534",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 252800,
+      "priority_score": 1567,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.2,528 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a01d7076",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 2078900,
+      "priority_score": 8731,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.20,789 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_b5b5bb79",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 897300,
+      "priority_score": 4576,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.8,973 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_7df8d833",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 52000,
+      "priority_score": 457,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.520 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_50d60845",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1449000,
+      "priority_score": 3912,
+      "recovery_probability": 0.27,
+      "reasons": [
+        "Amount Rs.14,490 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_05bcac7a",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 80700,
+      "priority_score": 564,
+      "recovery_probability": 0.7,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.807 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_558e29a6",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 60400,
+      "priority_score": 374,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.604 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_bb03c82e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 83500,
+      "priority_score": 734,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.835 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_05bcac7a",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 2600900,
+      "priority_score": 17686,
+      "recovery_probability": 0.68,
+      "reasons": [
+        "Amount Rs.26,009 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_75b9f3ba",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 76600,
+      "priority_score": 559,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.766 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_3711ed4d",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 354600,
+      "priority_score": 1063,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_d7a649a6",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 511400,
+      "priority_score": 2301,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_e02b3556",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 529100,
+      "priority_score": 4656,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.5,291 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e5ba07b3",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 90600,
+      "priority_score": 407,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_d7a649a6",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 51400,
+      "priority_score": 375,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.514 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_b0d976bd",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 679400,
+      "priority_score": 2174,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_ec475152",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 2160300,
+      "priority_score": 9073,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.21,603 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_f8e0577d",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 91700,
+      "priority_score": 412,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_eae59159",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 43200,
+      "priority_score": 64,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_27466ea2",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 2829200,
+      "priority_score": 19238,
+      "recovery_probability": 0.68,
+      "reasons": [
+        "Amount Rs.28,292 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_edb96097",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 47000,
+      "priority_score": 413,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.470 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a16639b5",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 72200,
+      "priority_score": 447,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.722 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_05f95e49",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 75000,
+      "priority_score": 157,
+      "recovery_probability": 0.21,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_08c77528",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 3163900,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_4fe072c6",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 91200,
+      "priority_score": 665,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.912 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_5f95e74f",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 593000,
+      "priority_score": 2134,
+      "recovery_probability": 0.36,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.5,930 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_24f7706e",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 627900,
+      "priority_score": 1883,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_b6ef07ba",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 564900,
+      "priority_score": 4123,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.5,649 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_5f95e74f",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 24600,
+      "priority_score": 152,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.246 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_041733fa",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 91200,
+      "priority_score": 428,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.912 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_56a508fb",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1698500,
+      "priority_score": 5265,
+      "recovery_probability": 0.31,
+      "reasons": [
+        "Amount Rs.16,985 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_271861ea",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1795300,
+      "priority_score": 7540,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.17,953 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_4e16d36c",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 76000,
+      "priority_score": 228,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_4e6923eb",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 554300,
+      "priority_score": 4046,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.5,543 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_efbc52eb",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 54200,
+      "priority_score": 162,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_c791c659",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 450500,
+      "priority_score": 3964,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.4,505 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_4ba6173d",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 738100,
+      "priority_score": 1107,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_6e464b46",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 59800,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Attempt count 4 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_1eb577fc",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 22800,
+      "priority_score": 166,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.228 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_0fc5c32e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 4500400,
+      "priority_score": 37353,
+      "recovery_probability": 0.83,
+      "reasons": [
+        "Amount Rs.45,004 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_25ca51d9",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 67100,
+      "priority_score": 301,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_27484983",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 58700,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_82a715e1",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 185300,
+      "priority_score": 1352,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.1,853 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_3af8e410",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 349600,
+      "priority_score": 2167,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.3,496 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_b035715a",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 704300,
+      "priority_score": 6197,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.7,043 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_d33bdf7e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 51800,
+      "priority_score": 378,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.518 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_febd9bf3",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 99000,
+      "priority_score": 297,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_9b5c4f6a",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 63700,
+      "priority_score": 203,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_23d9fad9",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 272900,
+      "priority_score": 818,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_41798261",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 73300,
+      "priority_score": 234,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_8103182f",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 45000,
+      "priority_score": 202,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_a53dc7ec",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 651100,
+      "priority_score": 5729,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.6,511 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_2d3dcedd",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 657600,
+      "priority_score": 4800,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.6,576 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_785ae670",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 1561000,
+      "priority_score": 10146,
+      "recovery_probability": 0.65,
+      "reasons": [
+        "Amount Rs.15,610 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_d530025d",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 21600,
+      "priority_score": 190,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.216 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_6951fae5",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 76500,
+      "priority_score": 244,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_910eec0e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 45600,
+      "priority_score": 401,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.456 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f57c8f8f",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 2213300,
+      "priority_score": 12615,
+      "recovery_probability": 0.57,
+      "reasons": [
+        "Amount Rs.22,133 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_b645e6bc",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 264700,
+      "priority_score": 1349,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.2,647 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_8e3d64c0",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 24500,
+      "priority_score": 215,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.245 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_7d70d8bb",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 21100,
+      "priority_score": 31,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_60de9297",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 68800,
+      "priority_score": 605,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.688 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_87b5ded4",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 77500,
+      "priority_score": 232,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_e40b1ae6",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 469700,
+      "priority_score": 3428,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.4,697 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_19a4ab9e",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 198600,
+      "priority_score": 635,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_7317f1c2",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 357300,
+      "priority_score": 3144,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.3,573 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_39793daf",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 869900,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_ecfb83fc",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 43800,
+      "priority_score": 240,
+      "recovery_probability": 0.55,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.438 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a5da0b5f",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 35100,
+      "priority_score": 164,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.351 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_6fcbd3a0",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 572800,
+      "priority_score": 2692,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.5,728 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_5c5098b3",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 909000,
+      "priority_score": 2727,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_d3f51116",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 29200,
+      "priority_score": 181,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.292 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_d0cb46b1",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 387000,
+      "priority_score": 2825,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.3,870 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_81c27bc8",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 905600,
+      "priority_score": 5614,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.9,056 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_35de532f",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 3161400,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_ba813eee",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 45700,
+      "priority_score": 333,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.457 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_cd7188a3",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 25400,
+      "priority_score": 129,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.254 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_dd4b8443",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 76100,
+      "priority_score": 669,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.761 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_9862f54a",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 359400,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_04d5aad5",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 31900,
+      "priority_score": 280,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.319 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_51974851",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 2597300,
+      "priority_score": 10908,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.25,973 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_08eed77d",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 2810400,
+      "priority_score": 7026,
+      "recovery_probability": 0.25,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_3a7e68cd",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 902200,
+      "priority_score": 7939,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.9,022 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_7d560cdf",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 52800,
+      "priority_score": 464,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.528 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e70d45dd",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 96100,
+      "priority_score": 701,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.961 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_111e34e7",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 23600,
+      "priority_score": 120,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.236 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a59480fe",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 66600,
+      "priority_score": 412,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.666 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_78cc5d32",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 90800,
+      "priority_score": 272,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_c46730ab",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 899400,
+      "priority_score": 7914,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.8,994 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_65d0b09b",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 29900,
+      "priority_score": 95,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_f55d4e2a",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1301400,
+      "priority_score": 4034,
+      "recovery_probability": 0.31,
+      "reasons": [
+        "Amount Rs.13,014 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_e17812b1",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 62000,
+      "priority_score": 545,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.620 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_33eeb6aa",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 79600,
+      "priority_score": 700,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.796 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_b2e4627d",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 4049000,
+      "priority_score": 17005,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.40,490 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_494b0617",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 63300,
+      "priority_score": 94,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_cabf2eb0",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 58900,
+      "priority_score": 88,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_07dd75b4",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 77800,
+      "priority_score": 163,
+      "recovery_probability": 0.21,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_9fe8a059",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 677200,
+      "priority_score": 1015,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_6b8c878e",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 164500,
+      "priority_score": 773,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.1,645 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_bad3986a",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 3141100,
+      "priority_score": 3141,
+      "recovery_probability": 0.1,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_0449a4b1",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 546500,
+      "priority_score": 819,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_8d99aefc",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 867300,
+      "priority_score": 7632,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.8,673 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_508755e6",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 122800,
+      "priority_score": 577,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.1,228 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_0efac132",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 708600,
+      "priority_score": 1062,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_049f678d",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 82300,
+      "priority_score": 510,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.823 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_74621ec3",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 24500,
+      "priority_score": 215,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.245 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f8a2e9f3",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 66300,
+      "priority_score": 198,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_125fb872",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1648900,
+      "priority_score": 5111,
+      "recovery_probability": 0.31,
+      "reasons": [
+        "Amount Rs.16,489 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_c960f26e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 44000,
+      "priority_score": 321,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.440 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_8cbb4bc8",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 48100,
+      "priority_score": 298,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.481 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_630dc6e2",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 1331400,
+      "priority_score": 3328,
+      "recovery_probability": 0.25,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_7b10f0dc",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 42000,
+      "priority_score": 214,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.420 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_721a8b68",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 4540300,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_a1b0e069",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 489800,
+      "priority_score": 734,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_2e166ef4",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 204100,
+      "priority_score": 1489,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.2,041 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_babb3e35",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1284100,
+      "priority_score": 1284,
+      "recovery_probability": 0.1,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_73ea5283",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 68900,
+      "priority_score": 323,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.689 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f85f515c",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 28100,
+      "priority_score": 84,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_3e99563e",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 632700,
+      "priority_score": 3479,
+      "recovery_probability": 0.55,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.6,327 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_d1ab8ddc",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 91700,
+      "priority_score": 137,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_cc8faabf",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 66300,
+      "priority_score": 311,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.663 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a5c501a1",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 35500,
+      "priority_score": 259,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.355 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_02d1968c",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 198200,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_fc0edf5a",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 88000,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Attempt count 4 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_f6e0831b",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 71800,
+      "priority_score": 107,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_bc52c3e4",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 97900,
+      "priority_score": 293,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_86df6415",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 47800,
+      "priority_score": 152,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_4267f090",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 756600,
+      "priority_score": 4690,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.7,566 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_3d80fb6d",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 62800,
+      "priority_score": 458,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.628 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_5dd98b92",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 186100,
+      "priority_score": 279,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_90ccd466",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 63300,
+      "priority_score": 348,
+      "recovery_probability": 0.55,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.633 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_88ad8bf2",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 63900,
+      "priority_score": 562,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.639 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_fb77c7c7",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 60300,
+      "priority_score": 90,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_8abcdce9",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 574200,
+      "priority_score": 2698,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.5,742 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_9768f688",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 477000,
+      "priority_score": 1526,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_7740ea85",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 66900,
+      "priority_score": 414,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.669 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_30db23be",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 61300,
+      "priority_score": 380,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.613 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_33d4bb79",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 30700,
+      "priority_score": 270,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.307 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e3c301e6",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 463000,
+      "priority_score": 3379,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.4,630 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_9c2c4780",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 3289600,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_5f905c3d",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 37600,
+      "priority_score": 120,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_3df09fcd",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 77600,
+      "priority_score": 566,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.776 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_faaf2e6a",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 67900,
+      "priority_score": 203,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_d0fd55e2",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 66100,
+      "priority_score": 99,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_6162022e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 930700,
+      "priority_score": 6794,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.9,307 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_ad507566",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 626700,
+      "priority_score": 4574,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.6,267 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f13dfa8b",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 1552600,
+      "priority_score": 1552,
+      "recovery_probability": 0.1,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_6f6b10d9",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 360000,
+      "priority_score": 1692,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.3,600 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_fb83cffd",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 185700,
+      "priority_score": 1355,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.1,857 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_3c23d57e",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 3184700,
+      "priority_score": 3184,
+      "recovery_probability": 0.1,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_6fcaa09c",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 92400,
+      "priority_score": 572,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.924 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_ac07d67e",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 88500,
+      "priority_score": 318,
+      "recovery_probability": 0.36,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.885 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_2945b418",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 98300,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Attempt count 4 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_e383630c",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 984300,
+      "priority_score": 3149,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_f5370ac5",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 36500,
+      "priority_score": 321,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.365 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f90b291a",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 89100,
+      "priority_score": 187,
+      "recovery_probability": 0.21,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_4aff88af",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 44300,
+      "priority_score": 323,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.443 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_7f9a9bdc",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 4025600,
+      "priority_score": 27374,
+      "recovery_probability": 0.68,
+      "reasons": [
+        "Amount Rs.40,256 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_932187a7",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 326700,
+      "priority_score": 2384,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.3,267 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_4c0ecea6",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 945200,
+      "priority_score": 5860,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.9,452 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_b9b602ef",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 64600,
+      "priority_score": 400,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.646 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_d6016d6a",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 60400,
+      "priority_score": 440,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.604 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_cc483704",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 3197300,
+      "priority_score": 18224,
+      "recovery_probability": 0.57,
+      "reasons": [
+        "Amount Rs.31,973 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_6386db32",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 868500,
+      "priority_score": 3126,
+      "recovery_probability": 0.36,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.8,685 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e4a6f412",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 964700,
+      "priority_score": 4534,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.9,647 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_b52d08a8",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 85300,
+      "priority_score": 127,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_54e13338",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 496300,
+      "priority_score": 744,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_28ea5c1d",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 406800,
+      "priority_score": 3579,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.4,068 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_0631ca0a",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 931600,
+      "priority_score": 1397,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_474923c5",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 21500,
+      "priority_score": 118,
+      "recovery_probability": 0.55,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.215 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_2140cf58",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 644700,
+      "priority_score": 5673,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.6,447 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_666b4e9c",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 4136100,
+      "priority_score": 34329,
+      "recovery_probability": 0.83,
+      "reasons": [
+        "Amount Rs.41,361 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_cc00a170",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 40300,
+      "priority_score": 60,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_6a27c1ba",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 86100,
+      "priority_score": 602,
+      "recovery_probability": 0.7,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.861 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_16b79a7b",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 60800,
+      "priority_score": 443,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.608 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_263ef941",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 73000,
+      "priority_score": 532,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.730 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_bdb1b3ba",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 626200,
+      "priority_score": 3193,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.6,262 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_28ea75bc",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 373000,
+      "priority_score": 1193,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_19acb92d",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 812600,
+      "priority_score": 2925,
+      "recovery_probability": 0.36,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.8,126 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a70bff78",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 96600,
+      "priority_score": 202,
+      "recovery_probability": 0.21,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_d3f5a997",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 26700,
+      "priority_score": 234,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.267 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_1f48ef16",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 837100,
+      "priority_score": 3934,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.8,371 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e9f676d1",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 48400,
+      "priority_score": 425,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.484 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f1b65d65",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1771700,
+      "priority_score": 7441,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.17,717 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_797eb7e3",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 904700,
+      "priority_score": 7961,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.9,047 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_4af0a0a7",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 3094400,
+      "priority_score": 8354,
+      "recovery_probability": 0.27,
+      "reasons": [
+        "Amount Rs.30,944 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_ffc68257",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 385200,
+      "priority_score": 1810,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.3,852 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_45531c70",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 76600,
+      "priority_score": 306,
+      "recovery_probability": 0.4,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_3c2e9d8b",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 60600,
+      "priority_score": 442,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.606 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_4136e501",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 89500,
+      "priority_score": 653,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.895 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_0329bddb",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1363100,
+      "priority_score": 5452,
+      "recovery_probability": 0.4,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_163134a5",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 73000,
+      "priority_score": 343,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.730 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_68708977",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 50900,
+      "priority_score": 162,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_21417793",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 83800,
+      "priority_score": 611,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.838 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_8088281b",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 4779900,
+      "priority_score": 20075,
+      "recovery_probability": 0.42,
+      "reasons": [
+        "Amount Rs.47,799 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_5dabc966",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 84100,
+      "priority_score": 126,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_9d5a9180",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 27300,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Attempt count 5 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_b3f3f7a6",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 34600,
+      "priority_score": 162,
+      "recovery_probability": 0.47,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.346 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_d527e95e",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 273900,
+      "priority_score": 1506,
+      "recovery_probability": 0.55,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.2,739 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_99fbb91d",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 49600,
+      "priority_score": 148,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_a681c92a",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 3049400,
+      "priority_score": 25310,
+      "recovery_probability": 0.83,
+      "reasons": [
+        "Amount Rs.30,494 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_ab3050aa",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 29100,
+      "priority_score": 87,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_ff7250f1",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 70500,
+      "priority_score": 225,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_db6845d3",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 806000,
+      "priority_score": 3627,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_d1facb80",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 77400,
+      "priority_score": 116,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_f5bc24bc",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 558200,
+      "priority_score": 4912,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.5,582 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_be8c30e3",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 699000,
+      "priority_score": 3145,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_61ab8ada",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 92900,
+      "priority_score": 510,
+      "recovery_probability": 0.55,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.929 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_db242dea",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 82600,
+      "priority_score": 602,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.826 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_3f08fa95",
+      "failure_type": "unknown",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.4,
+      "method": "fallback",
+      "amount": 972100,
+      "priority_score": 2916,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "AI confidence 0.40 < threshold 0.85.",
+        "Diagnosis method: DiagnosisMethod.FALLBACK."
+      ]
+    },
+    {
+      "event_id": "evt_cf175647",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 782400,
+      "priority_score": 5711,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.7,824 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_ad31b0dd",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 4791000,
+      "priority_score": 7665,
+      "recovery_probability": 0.16,
+      "reasons": [
+        "Amount Rs.47,910 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_d8390c8c",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 722900,
+      "priority_score": 4481,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.7,229 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_354dce6f",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 65000,
+      "priority_score": 474,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.650 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_a9351937",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1408100,
+      "priority_score": 3801,
+      "recovery_probability": 0.27,
+      "reasons": [
+        "Amount Rs.14,081 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_63108b7f",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 37600,
+      "priority_score": 112,
+      "recovery_probability": 0.3,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    },
+    {
+      "event_id": "evt_fbcdd3a5",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 415000,
+      "priority_score": 622,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_3f868b17",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 901100,
+      "priority_score": 3243,
+      "recovery_probability": 0.36,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.9,011 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_051b0a15",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 722000,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_edf52a82",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 65100,
+      "priority_score": 475,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.651 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_efbb0f97",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 324900,
+      "priority_score": 2014,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.3,249 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_b806f440",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 43700,
+      "priority_score": 65,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_e989feed",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 76200,
+      "priority_score": 388,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.762 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e7a1b112",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 86000,
+      "priority_score": 533,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.860 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_45fcbe86",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 2147300,
+      "priority_score": 14601,
+      "recovery_probability": 0.68,
+      "reasons": [
+        "Amount Rs.21,473 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_ac88b502",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 96500,
+      "priority_score": 704,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.965 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_724ae2e6",
+      "failure_type": "temporary_failure",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 3195700,
+      "priority_score": 21730,
+      "recovery_probability": 0.68,
+      "reasons": [
+        "Amount Rs.31,957 >= threshold Rs.10,000.",
+        "High-value cases require human approval."
+      ]
+    },
+    {
+      "event_id": "evt_f9fae71e",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 39600,
+      "priority_score": 348,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.396 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_4a443c24",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 583300,
+      "priority_score": 5133,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.5,833 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_57db9617",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 88400,
+      "priority_score": 548,
+      "recovery_probability": 0.62,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.884 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.INSUFFICIENT_FUNDS' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_796e04d3",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 59100,
+      "priority_score": 301,
+      "recovery_probability": 0.51,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.591 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_9f6b983f",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 86800,
+      "priority_score": 633,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.868 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f1c98198",
+      "failure_type": "insufficient_funds",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "insufficient_funds",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 71300,
+      "priority_score": 228,
+      "recovery_probability": 0.32,
+      "reasons": [
+        "Attempt count 3 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_46dec09e",
+      "failure_type": "already_successful",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 42500,
+      "priority_score": 191,
+      "recovery_probability": 0.45,
+      "reasons": [
+        "Payment confirmed already succeeded \u2014 no action needed."
+      ]
+    },
+    {
+      "event_id": "evt_82853935",
+      "failure_type": "retry_limit",
+      "policy_decision": "QUEUE_FOR_REVIEW",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 91700,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Attempt count 5 >= limit 3.",
+        "Multiple retries exhausted \u2014 manual review required."
+      ]
+    },
+    {
+      "event_id": "evt_e34e248c",
+      "failure_type": "mandate_inactive",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "mandate_inactive",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 1536500,
+      "priority_score": 0,
+      "recovery_probability": 0.0,
+      "reasons": [
+        "Subscription mandate is inactive \u2014 payment link cannot recover this."
+      ]
+    },
+    {
+      "event_id": "evt_5cd18627",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 75900,
+      "priority_score": 667,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.759 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_e8e169cd",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 89500,
+      "priority_score": 626,
+      "recovery_probability": 0.7,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.895 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_18216f9b",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 72400,
+      "priority_score": 528,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.724 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_34d0bac4",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 748700,
+      "priority_score": 5465,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.7,487 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_1920000b",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 986600,
+      "priority_score": 8682,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.9,866 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_7307004d",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 33700,
+      "priority_score": 246,
+      "recovery_probability": 0.73,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.337 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_40d46e92",
+      "failure_type": "otp_or_authentication_issue",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "otp_or_authentication_issue",
+      "confidence": 0.95,
+      "method": "deterministic",
+      "amount": 983500,
+      "priority_score": 6884,
+      "recovery_probability": 0.7,
+      "reasons": [
+        "Confidence 0.95 >= 0.85.",
+        "Amount Rs.9,835 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.OTP_OR_AUTHENTICATION_ISSUE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_5ff4eaaf",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 464800,
+      "priority_score": 4090,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.4,648 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_0b47ffd7",
+      "failure_type": "temporary_failure",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "temporary_failure",
+      "confidence": 0.97,
+      "method": "deterministic",
+      "amount": 58700,
+      "priority_score": 516,
+      "recovery_probability": 0.88,
+      "reasons": [
+        "Confidence 0.97 >= 0.85.",
+        "Amount Rs.587 < threshold Rs.10,000.",
+        "Attempt count 1 < 3.",
+        "Failure bucket 'DiagnosisBucket.TEMPORARY_FAILURE' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_f41b8b36",
+      "failure_type": "payment_credential_expired",
+      "policy_decision": "AUTO",
+      "diagnosis_bucket": "payment_credential_expired",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 87500,
+      "priority_score": 315,
+      "recovery_probability": 0.36,
+      "reasons": [
+        "Confidence 0.99 >= 0.85.",
+        "Amount Rs.875 < threshold Rs.10,000.",
+        "Attempt count 2 < 3.",
+        "Failure bucket 'DiagnosisBucket.PAYMENT_CREDENTIAL_EXPIRED' is recoverable."
+      ]
+    },
+    {
+      "event_id": "evt_69e2e5f5",
+      "failure_type": "customer_opted_out",
+      "policy_decision": "BLOCKED",
+      "diagnosis_bucket": "unknown",
+      "confidence": 0.99,
+      "method": "deterministic",
+      "amount": 831400,
+      "priority_score": 1247,
+      "recovery_probability": 0.15,
+      "reasons": [
+        "Customer has opted out of WhatsApp outreach."
+      ]
+    }
+  ]
+}
