@@ -34,23 +34,32 @@ async def list_cases(
 ):
     """List recovery cases. Sorted by priority_score descending."""
     filters = []
-    if decision:
+    if decision and isinstance(decision, str):
         filters.append(("policy.decision", "==", decision.upper()))
-    if status:
+    if status and isinstance(status, str):
         filters.append(("status", "==", status.upper()))
 
-    cases = query_collection(
-        "recovery_cases",
-        filters=filters if filters else None,
-        order_by="priority_score",
-        descending=True,
-        limit=limit,
-    )
+    try:
+        cases = query_collection(
+            "recovery_cases",
+            filters=filters if filters else None,
+            order_by="priority_score",
+            descending=True,
+            limit=limit,
+        )
+    except Exception as exc:
+        # Fallback if composite index on (filter + priority_score) is not yet built
+        cases = query_collection(
+            "recovery_cases",
+            filters=filters if filters else None,
+            limit=limit,
+        )
+        cases.sort(key=lambda c: c.get("priority_score") or 0, reverse=True)
 
     # Apply amount filters in memory (Firestore doesn't support range + other filters easily)
-    if min_amount is not None:
+    if isinstance(min_amount, (int, float)):
         cases = [c for c in cases if c.get("amount", 0) >= min_amount]
-    if max_amount is not None:
+    if isinstance(max_amount, (int, float)):
         cases = [c for c in cases if c.get("amount", 0) <= max_amount]
 
     return {"cases": cases, "count": len(cases)}
