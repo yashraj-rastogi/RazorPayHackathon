@@ -97,10 +97,10 @@ export default function LandingPage() {
       {/* Problem Taste & Impact Section */}
       <section id="problem" className="landing-section">
         <div className="landing-container">
-          <div className="section-kicker">PROBLEM TASTE // DID YOU PICK SOMETHING THAT MATTERS?</div>
-          <h2 className="section-title">The Silent Leak in India's Subscription Economy</h2>
-          <p className="section-desc">
-            In recurring payments, over <strong>40% of failures are involuntary</strong> — customers never wanted to cancel. 
+          <div className="landing-section-kicker">PROBLEM TASTE // DID YOU PICK SOMETHING THAT MATTERS?</div>
+          <h2 className="landing-section-title">The Silent Leak in India's Subscription Economy</h2>
+          <p className="landing-section-desc">
+            In recurring payments, over <strong>40% of failures are involuntary</strong> — customers never wanted to cancel.
             RBI e-mandate renewal guidelines, transient UPI bank switch downtimes, and expired debit cards silently break auto-debits.
           </p>
 
@@ -178,9 +178,9 @@ export default function LandingPage() {
       {/* How It Works (Pipeline) */}
       <section id="how-it-works" className="landing-section bg-surface">
         <div className="landing-container">
-          <div className="section-kicker">SYSTEM ARCHITECTURE // EVENT-DRIVEN LIFECYCLE</div>
-          <h2 className="section-title">How RevGuard Operates in Real-Time</h2>
-          <p className="section-desc">
+          <div className="landing-section-kicker">SYSTEM ARCHITECTURE // EVENT-DRIVEN LIFECYCLE</div>
+          <h2 className="landing-section-title">How RevGuard Operates in Real-Time</h2>
+          <p className="landing-section-desc">
             An end-to-end autonomous pipeline connecting Razorpay webhooks to WhatsApp delivery and instant verification.
           </p>
 
@@ -231,9 +231,9 @@ export default function LandingPage() {
       {/* AI Judgment: Bounded Autonomy */}
       <section id="ai-judgment" className="landing-section">
         <div className="landing-container">
-          <div className="section-kicker">AI JUDGMENT // THE RIGHT TOOL IN THE RIGHT PLACE</div>
-          <h2 className="section-title">Bounded Autonomy: Where AI Ends and Code Rules</h2>
-          <p className="section-desc">
+          <div className="landing-section-kicker">AI JUDGMENT // THE RIGHT TOOL IN THE RIGHT PLACE</div>
+          <h2 className="landing-section-title">Bounded Autonomy: Where AI Ends and Code Rules</h2>
+          <p className="landing-section-desc">
             We don't let LLMs run wild with financial transactions. We use Gemini where probabilistic reasoning excels, and deterministic Python where absolute accuracy is non-negotiable.
           </p>
 
@@ -266,8 +266,8 @@ export default function LandingPage() {
       {/* 4 Rubric Pillars Showcase */}
       <section id="judging-rubric" className="landing-section bg-surface">
         <div className="landing-container">
-          <div className="section-kicker">EVALUATION READINESS // BUILT FOR RAZORPAY JUDGES</div>
-          <h2 className="section-title">Engineered to Excel on All 4 Judging Criteria</h2>
+          <div className="landing-section-kicker">EVALUATION READINESS // BUILT FOR RAZORPAY JUDGES</div>
+          <h2 className="landing-section-title">Engineered to Excel on All 4 Judging Criteria</h2>
 
           <div className="rubric-grid">
             <div className="rubric-card">
@@ -329,7 +329,7 @@ export default function LandingPage() {
               <div className="judge-step-item">
                 <span className="step-badge">Step 1</span>
                 <div>
-                  <strong>Opt-in to Twilio Sandbox:</strong> Send WhatsApp message <code>join breakfast-mountain</code> to <strong>+1 415 523 8886</strong>.
+                  <strong>Opt-in to Twilio Sandbox:</strong> Send WhatsApp message <code>join pile-cup</code> to <strong>+1 415 523 8886</strong>.
                 </div>
               </div>
               <div className="judge-step-item">

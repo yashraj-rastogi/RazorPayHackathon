@@ -1343,7 +1343,7 @@ tbody td {
   border-bottom: var(--border-thick);
 }
 
-.section-kicker {
+.landing-section-kicker {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 800;
@@ -1352,7 +1352,7 @@ tbody td {
   margin-bottom: var(--space-2);
 }
 
-.section-title {
+.landing-section-title {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: var(--weight-bold);
@@ -1361,7 +1361,7 @@ tbody td {
   letter-spacing: var(--tracking-tight);
 }
 
-.section-desc {
+.landing-section-desc {
   font-size: var(--text-lg);
   color: var(--color-text-secondary);
   max-width: 800px;
@@ -1936,7 +1936,7 @@ tbody td {
   margin-top: 16px;
 }
 
-.checklist-item {
+.docs-check-item {
   display: flex;
   gap: 12px;
   align-items: flex-start;

@@ -57,7 +57,7 @@ export default function Docs() {
           </div>
 
           <p className="docs-p">
-            In recurring billing ecosystems (SaaS, EdTech, OTT, Insurance, and Memberships), <strong>over 40% of all payment failures are involuntary</strong>. 
+            In recurring billing ecosystems (SaaS, EdTech, OTT, Insurance, and Memberships), <strong>over 40% of all payment failures are involuntary</strong>.
             The customer did not intend to churn or cancel. Instead, technical friction broke the transaction.
           </p>
 
@@ -146,7 +146,7 @@ export default function Docs() {
 
           <div className="arch-diagram-box">
             <pre className="arch-ascii">
-{`┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+              {`┌────────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                 REVGUARD SYSTEM ARCHITECTURE                                   │
 └────────────────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -204,19 +204,19 @@ export default function Docs() {
 
           <h3 style={{ marginTop: '24px' }}>Core Engineering Standards</h3>
           <div className="feature-checklist">
-            <div className="checklist-item">
+            <div className="docs-check-item">
               <span className="check-icon">✓</span>
               <div>
                 <strong>HMAC Signature Verification:</strong> Every inbound webhook from Razorpay is cryptographically verified using secret key digests before processing.
               </div>
             </div>
-            <div className="checklist-item">
+            <div className="docs-check-item">
               <span className="check-icon">✓</span>
               <div>
                 <strong>Strict Idempotency:</strong> Webhooks are hashed by event ID and payload signature to prevent duplicate charges or repetitive messages.
               </div>
             </div>
-            <div className="checklist-item">
+            <div className="docs-check-item">
               <span className="check-icon">✓</span>
               <div>
                 <strong>48/48 Automated Tests Passing:</strong> The complete test suite exercises policy rules, risk classification, webhook handling, and Twilio dispatch with zero mock failures.
@@ -392,7 +392,7 @@ export default function Docs() {
               <p>On your mobile phone, open WhatsApp and send the following message to Twilio's verified sandbox number:</p>
               <div className="code-box">
                 <div><strong>To:</strong> +1 415 523 8886</div>
-                <div><strong>Message:</strong> <code>join breakfast-mountain</code></div>
+                <div><strong>Message:</strong> <code>join pile-cup</code></div>
               </div>
               <p className="text-muted" style={{ fontSize: '13px', marginTop: '8px' }}>
                 You will immediately receive a confirmation: <em>"You are all set! The sandbox keyword has been joined."</em>
