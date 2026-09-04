@@ -103,21 +103,26 @@ async def simulate_failure(req: SimulateRequest):
     return {"simulation": req.type, "status": "not_yet_implemented"}
 
 
+class PitchScenarioRequest(BaseModel):
+    phone_override: Optional[str] = None
+
+
 @router.post("/pitch-scenario")
-async def simulate_pitch_scenario():
+async def pitch_scenario(payload: Optional[PitchScenarioRequest] = None):
     """
-    1-Click Pitch Demo Endpoint for Hackathon Judges.
-    Executes the entire end-to-end RevGuard lifecycle in one orchestrated flow:
-    1. Ingests a real failed recurring UPI Autopay mandate (Rs. 2,499).
-    2. Runs AI/Deterministic diagnosis.
-    3. Evaluates bounded financial policy (AUTO).
-    4. Creates a real Razorpay payment link & dispatches WhatsApp message.
+    1-Click Pitch Walkthrough Scenario:
+    1. Ingests a simulated high-confidence recurring failure (Rs.2,499).
+    2. Diagnoses root cause via deterministic/Gemini engine.
+    3. Runs policy engine verification.
+    4. Executes recovery (creates real Razorpay Payment Link + customer message).
     5. Returns all telemetric state for live cockpit animation.
     """
     from backend.models.event import NormalizedRevenueEvent
     from backend.services.ingestion import ingest_event
     from backend.services.recovery import execute_recovery
     import uuid
+
+    phone = payload.phone_override if payload else None
 
     event_id = f"evt_pitch_{uuid.uuid4().hex[:8]}"
     event = NormalizedRevenueEvent(
@@ -143,7 +148,7 @@ async def simulate_pitch_scenario():
         update_document("recovery_cases", case_id, {"policy.decision": "AUTO", "status": "ACTION_PENDING"})
 
     # 3. Execute Recovery (Razorpay Link + WhatsApp Outreach)
-    recovery_result = execute_recovery(case_id)
+    recovery_result = execute_recovery(case_id, phone_override=phone)
 
     return {
         "status": "success",

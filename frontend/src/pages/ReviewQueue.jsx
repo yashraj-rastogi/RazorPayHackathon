@@ -8,6 +8,9 @@ export default function ReviewQueue() {
   const [loading, setLoading] = useState(true);
   const [actionMsgs, setActionMsgs] = useState({});
 
+  const [approvalModalCase, setApprovalModalCase] = useState(null);
+  const [targetPhone, setTargetPhone] = useState('+917355788131');
+
   const load = () => {
     setLoading(true);
     api.getCases({ decision: 'QUEUE_FOR_REVIEW', limit: 100 })
@@ -20,10 +23,10 @@ export default function ReviewQueue() {
 
   const setMsg = (caseId, msg) => setActionMsgs(p => ({ ...p, [caseId]: msg }));
 
-  const handleApprove = async (caseId) => {
+  const handleApprove = async (caseId, phoneOverride = null) => {
     setMsg(caseId, 'APPROVING...');
     try {
-      await api.approveCase(caseId);
+      await api.approveCase(caseId, phoneOverride ? { phone_override: phoneOverride } : {});
       setMsg(caseId, '✓ APPROVED & RECOVERY TRIGGERED');
       setTimeout(load, 1200);
     } catch (e) {
@@ -168,7 +171,10 @@ export default function ReviewQueue() {
                       <button
                         className="btn btn-success"
                         style={{ fontSize: '11px', width: '100%' }}
-                        onClick={() => handleApprove(c.case_id)}
+                        onClick={() => {
+                          setApprovalModalCase(c);
+                          setTargetPhone('+917355788131');
+                        }}
                       >
                         ✓ APPROVE RECOVERY
                       </button>
@@ -192,6 +198,101 @@ export default function ReviewQueue() {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {/* WhatsApp Outreach Dispatch Modal */}
+      {approvalModalCase && (
+        <div className="modal-backdrop">
+          <div className="modal-card" style={{ maxWidth: '520px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: '20px' }}>📱</span>
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '800' }}>DISPATCH RECOVERY TO WHATSAPP</h3>
+              </div>
+              <button
+                className="btn btn-ghost"
+                style={{ padding: '4px 10px', fontSize: '14px', fontWeight: '800' }}
+                onClick={() => setApprovalModalCase(null)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginBottom: 16 }}>
+              Approving this incident mints an official Razorpay Payment Link and dispatches a personalized recovery notification via Twilio WhatsApp API.
+            </p>
+
+            <div style={{ backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', padding: 12, borderRadius: 'var(--radius-sm)', marginBottom: 16 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-secondary)' }}>INCIDENT REF</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: '700' }}>{approvalModalCase.case_id}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-secondary)' }}>RECOVERY VALUE</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: '800', color: 'var(--color-dark)' }}>{formatRupees(approvalModalCase.amount)}</span>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Recipient WhatsApp Number (E.164 Format)
+              </label>
+              <input
+                type="text"
+                value={targetPhone}
+                onChange={e => setTargetPhone(e.target.value)}
+                placeholder="+919876543210"
+                style={{
+                  width: '100%',
+                  padding: '10px 14px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '14px',
+                  fontWeight: '700',
+                  border: '2px solid var(--color-border)',
+                  borderRadius: 'var(--radius-sm)',
+                  backgroundColor: 'var(--color-bg-base)',
+                  color: 'var(--color-dark)',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                }}
+              />
+            </div>
+
+            <div style={{
+              backgroundColor: '#FFFDF5',
+              border: '1px solid #D97706',
+              borderRadius: 'var(--radius-sm)',
+              padding: 12,
+              fontSize: '12px',
+              lineHeight: '1.5',
+              color: '#92400E',
+              marginBottom: 20,
+            }}>
+              <strong>💡 Testing with Your Personal WhatsApp?</strong><br />
+              If your phone has not joined this Twilio Sandbox before, open WhatsApp and send <code>join breakfast-mountain</code> to <code>+1 415 523 8886</code> first.
+            </div>
+
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+              <button
+                className="btn btn-ghost"
+                onClick={() => setApprovalModalCase(null)}
+              >
+                CANCEL
+              </button>
+              <button
+                className="btn btn-success"
+                style={{ fontWeight: '800' }}
+                onClick={() => {
+                  const cId = approvalModalCase.case_id;
+                  setApprovalModalCase(null);
+                  handleApprove(cId, targetPhone);
+                }}
+              >
+                🚀 APPROVE & DISPATCH TO WHATSAPP
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

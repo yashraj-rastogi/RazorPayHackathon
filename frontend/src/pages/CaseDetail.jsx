@@ -174,6 +174,9 @@ export default function CaseDetail() {
   const [loading, setLoading] = useState(true);
   const [actionMsg, setActionMsg] = useState('');
   const [activeTab, setActiveTab] = useState('overview');
+  const [dispatchModalOpen, setDispatchModalOpen] = useState(false);
+  const [dispatchType, setDispatchType] = useState('recover');
+  const [targetPhone, setTargetPhone] = useState('+917355788131');
 
   const load = () => {
     setLoading(true);
@@ -193,10 +196,10 @@ export default function CaseDetail() {
 
   useEffect(() => { load(); }, [caseId]);
 
-  const handleRecover = async () => {
+  const handleRecover = async (phoneOverride = null) => {
     setActionMsg('EXECUTING ACTION VIA RAZORPAY...');
     try {
-      const r = await api.recoverCase(caseId);
+      const r = await api.recoverCase(caseId, phoneOverride ? { phone_override: phoneOverride } : {});
       setActionMsg(`✓ PAYMENT LINK CREATED: ${r.recovery_url || r.provider_reference}`);
       load();
     } catch (e) {
@@ -204,11 +207,11 @@ export default function CaseDetail() {
     }
   };
 
-  const handleApprove = async () => {
+  const handleApprove = async (phoneOverride = null) => {
     setActionMsg('APPROVING INCIDENT FOR RECOVERY...');
     try {
-      await api.approveCase(caseId);
-      setActionMsg('✓ APPROVED & DISPATCHED');
+      await api.approveCase(caseId, phoneOverride ? { phone_override: phoneOverride } : {});
+      setActionMsg(`✓ APPROVED & DISPATCHED`);
       load();
     } catch (e) {
       setActionMsg('✗ ' + e.message);
@@ -290,14 +293,26 @@ export default function CaseDetail() {
           )}
 
           {policy.decision === 'AUTO' && !['RECOVERED', 'CLOSED', 'ACTION_SENT'].includes(c.status) && (
-            <button className="btn btn-primary" onClick={handleRecover}>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                setDispatchType('recover');
+                setDispatchModalOpen(true);
+              }}
+            >
               ⚡ RECOVER NOW (PAYMENT LINK)
             </button>
           )}
 
           {(c.status === 'QUEUED_FOR_REVIEW' || policy.decision === 'QUEUE_FOR_REVIEW') && (
             <>
-              <button className="btn btn-success" onClick={handleApprove}>
+              <button
+                className="btn btn-success"
+                onClick={() => {
+                  setDispatchType('approve');
+                  setDispatchModalOpen(true);
+                }}
+              >
                 ✓ APPROVE RECOVERY
               </button>
               <button className="btn btn-danger" onClick={handleReject}>
@@ -579,6 +594,106 @@ export default function CaseDetail() {
             Exact WhatsApp communication synthesized at recovery execution. Stored immutably without re-calling the AI engine.
           </p>
           <MessagePreview caseId={caseId} />
+        </div>
+      )}
+
+      {/* WhatsApp Outreach Dispatch Modal */}
+      {dispatchModalOpen && (
+        <div className="modal-backdrop">
+          <div className="modal-card" style={{ maxWidth: '520px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: '20px' }}>📱</span>
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '800' }}>
+                  {dispatchType === 'approve' ? 'APPROVE & DISPATCH OUTREACH' : 'EXECUTE RECOVERY OUTREACH'}
+                </h3>
+              </div>
+              <button
+                className="btn btn-ghost"
+                style={{ padding: '4px 10px', fontSize: '14px', fontWeight: '800' }}
+                onClick={() => setDispatchModalOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginBottom: 16 }}>
+              Generates a secure Razorpay Payment Link and dispatches personalized WhatsApp outreach via Twilio API.
+            </p>
+
+            <div style={{ backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', padding: 12, borderRadius: 'var(--radius-sm)', marginBottom: 16 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-secondary)' }}>INCIDENT REF</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: '700' }}>{caseId}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-secondary)' }}>AMOUNT AT RISK</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: '800', color: 'var(--color-dark)' }}>{formatRupees(c.amount)}</span>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Recipient WhatsApp Number (E.164 Format)
+              </label>
+              <input
+                type="text"
+                value={targetPhone}
+                onChange={e => setTargetPhone(e.target.value)}
+                placeholder="+919876543210"
+                style={{
+                  width: '100%',
+                  padding: '10px 14px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '14px',
+                  fontWeight: '700',
+                  border: '2px solid var(--color-border)',
+                  borderRadius: 'var(--radius-sm)',
+                  backgroundColor: 'var(--color-bg-base)',
+                  color: 'var(--color-dark)',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                }}
+              />
+            </div>
+
+            <div style={{
+              backgroundColor: '#FFFDF5',
+              border: '1px solid #D97706',
+              borderRadius: 'var(--radius-sm)',
+              padding: 12,
+              fontSize: '12px',
+              lineHeight: '1.5',
+              color: '#92400E',
+              marginBottom: 20,
+            }}>
+              <strong>💡 Testing with Your Personal WhatsApp?</strong><br />
+              If your phone has not joined this Twilio Sandbox before, open WhatsApp and send <code>join breakfast-mountain</code> to <code>+1 415 523 8886</code> first.
+            </div>
+
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+              <button
+                className="btn btn-ghost"
+                onClick={() => setDispatchModalOpen(false)}
+              >
+                CANCEL
+              </button>
+              <button
+                className="btn btn-primary"
+                style={{ fontWeight: '800' }}
+                onClick={() => {
+                  setDispatchModalOpen(false);
+                  if (dispatchType === 'approve') {
+                    handleApprove(targetPhone);
+                  } else {
+                    handleRecover(targetPhone);
+                  }
+                }}
+              >
+                🚀 DISPATCH VIA WHATSAPP
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

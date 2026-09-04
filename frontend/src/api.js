@@ -22,8 +22,14 @@ export const api = {
   getCase: (id) => apiFetch(`/api/v1/cases/${id}`),
   getCaseAudit: (id) => apiFetch(`/api/v1/cases/${id}/audit`),
   getCaseMessage: (id) => apiFetch(`/api/v1/cases/${id}/message`),
-  recoverCase: (id) => apiFetch(`/api/v1/cases/${id}/recover`, { method: 'POST' }),
-  approveCase: (id) => apiFetch(`/api/v1/cases/${id}/approve`, { method: 'POST' }),
+  recoverCase: (id, payload = {}) => apiFetch(`/api/v1/cases/${id}/recover`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  }),
+  approveCase: (id, payload = {}) => apiFetch(`/api/v1/cases/${id}/approve`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  }),
   rejectCase: (id, reason) => apiFetch(`/api/v1/cases/${id}/reject`, {
     method: 'POST',
     body: JSON.stringify({ reason }),
@@ -37,8 +43,9 @@ export const api = {
     method: 'POST',
     body: JSON.stringify({ type, case_id }),
   }),
-  simulatePitchScenario: () => apiFetch('/api/v1/simulate/pitch-scenario', {
+  simulatePitchScenario: (payload = {}) => apiFetch('/api/v1/simulate/pitch-scenario', {
     method: 'POST',
+    body: JSON.stringify(payload),
   }),
 };
 

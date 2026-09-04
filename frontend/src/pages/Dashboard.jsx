@@ -29,6 +29,7 @@ export default function Dashboard() {
   const [pitchStep, setPitchStep] = useState(0);
   const [pitchData, setPitchData] = useState(null);
   const [pitchRunning, setPitchRunning] = useState(false);
+  const [demoPhone, setDemoPhone] = useState('+917355788131');
 
   const load = () => {
     setLoading(true);
@@ -93,7 +94,7 @@ export default function Dashboard() {
       setPitchStep(4);
 
       // Step 4: Dispatch Razorpay Link & WhatsApp outreach via API
-      const result = await api.simulatePitchScenario();
+      const result = await api.simulatePitchScenario(demoPhone ? { phone_override: demoPhone } : {});
       setPitchData(result);
       setPitchStep(5);
 
@@ -439,6 +440,46 @@ export default function Dashboard() {
                   ✕
                 </button>
               )}
+            </div>
+
+            {/* Target WhatsApp Recipient */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 12,
+              padding: '10px 14px',
+              backgroundColor: 'var(--color-bg-surface)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-sm)',
+              marginBottom: 16
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: '16px' }}>📱</span>
+                <div>
+                  <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>WhatsApp Target Destination</div>
+                  <div style={{ fontSize: '10px', color: 'var(--color-text-secondary)' }}>Twilio Sandbox E.164 phone number</div>
+                </div>
+              </div>
+              <input
+                type="text"
+                disabled={pitchRunning}
+                value={demoPhone}
+                onChange={e => setDemoPhone(e.target.value)}
+                placeholder="+919876543210"
+                style={{
+                  padding: '6px 10px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '12px',
+                  fontWeight: '700',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--radius-sm)',
+                  backgroundColor: 'var(--color-bg-base)',
+                  color: 'var(--color-dark)',
+                  width: '180px',
+                  textAlign: 'right'
+                }}
+              />
             </div>
 
             {/* Sequence of 5 Tactical Steps */}

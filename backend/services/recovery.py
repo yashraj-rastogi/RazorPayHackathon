@@ -58,7 +58,7 @@ def _build_idempotency_key(case_id: str, action_type: str, attempt_count: int) -
     return "revguard-" + hashlib.sha256(raw.encode()).hexdigest()[:16]
 
 
-def execute_recovery(case_id: str) -> dict:
+def execute_recovery(case_id: str, phone_override: str | None = None) -> dict:
     """
     Execute recovery for an AUTO case.
 
@@ -122,14 +122,15 @@ def execute_recovery(case_id: str) -> dict:
     from backend.models.customer import Customer
     from backend import config
     default_phone = config.TWILIO_TEST_PHONE_OVERRIDE or "+919876543210"
+    target_phone = phone_override or customer_doc.get("phone") or default_phone
     customer = Customer(
         customer_id=case.customer_id,
         merchant_id=case.merchant_id,
         name=customer_doc.get("name", "Valued Customer"),
-        phone=customer_doc.get("phone") or default_phone,
+        phone=target_phone,
         email=customer_doc.get("email", "customer@example.com"),
         language_pref=customer_doc.get("language_pref", "english"),
-        whatsapp_opt_in=customer_doc.get("whatsapp_opt_in", True),
+        whatsapp_opt_in=True if phone_override else customer_doc.get("whatsapp_opt_in", True),
     )
 
     # Build action record
@@ -246,8 +247,8 @@ def execute_recovery(case_id: str) -> dict:
     })
 
     # 8. Send message
-    send_phone = customer.phone or config.TWILIO_TEST_PHONE_OVERRIDE
-    if customer.whatsapp_opt_in and send_phone:
+    send_phone = phone_override or customer.phone or config.TWILIO_TEST_PHONE_OVERRIDE
+    if (customer.whatsapp_opt_in or phone_override) and send_phone:
         try:
             from backend.providers.messaging_mock import get_messaging_provider
             messaging = get_messaging_provider()

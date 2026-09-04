@@ -87,8 +87,12 @@ async def get_case(case_id: str):
     }
 
 
+class RecoveryExecutionRequest(BaseModel):
+    phone_override: Optional[str] = None
+
+
 @router.post("/{case_id}/recover")
-async def recover(case_id: str):
+async def recover(case_id: str, payload: Optional[RecoveryExecutionRequest] = None):
     """Execute recovery action for an AUTO case. Idempotent."""
     case = get_document("recovery_cases", case_id)
     if not case:
@@ -103,8 +107,9 @@ async def recover(case_id: str):
             },
         )
 
+    phone = payload.phone_override if payload else None
     try:
-        result = execute_recovery(case_id)
+        result = execute_recovery(case_id, phone_override=phone)
         return result
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
@@ -113,7 +118,7 @@ async def recover(case_id: str):
 
 
 @router.post("/{case_id}/approve")
-async def approve(case_id: str):
+async def approve(case_id: str, payload: Optional[RecoveryExecutionRequest] = None):
     """Approve a QUEUE_FOR_REVIEW case and execute recovery."""
     case = get_document("recovery_cases", case_id)
     if not case:
@@ -130,7 +135,8 @@ async def approve(case_id: str):
     attempt_count = event_doc.get("attempt_count", 1)
 
     customer_doc = get_document("customers", case.get("customer_id", "")) or {}
-    customer_opted_out = not customer_doc.get("whatsapp_opt_in", True)
+    phone = payload.phone_override if payload else None
+    customer_opted_out = not customer_doc.get("whatsapp_opt_in", True) and not phone
 
     policy = policy_service.evaluate(
         case_obj,
@@ -149,11 +155,11 @@ async def approve(case_id: str):
         actor=AuditActor.HUMAN,
         stage="review",
         case_id=case_id,
-        details={"approved_by": "human_reviewer"},
+        details={"approved_by": "human_reviewer", "phone_override": phone},
     )
 
     try:
-        result = execute_recovery(case_id)
+        result = execute_recovery(case_id, phone_override=phone)
         return result
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))

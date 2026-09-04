@@ -36,7 +36,12 @@ class TwilioMessagingProvider:
         Send a WhatsApp message via Twilio REST API.
         Recipient number must be formatted in E.164 (e.g., +919876543210).
         """
-        target_phone = self.test_phone_override if self.test_phone_override else phone
+        # If phone is a custom number (not dummy synthetic default), send to it directly;
+        # otherwise fall back to configured test_phone_override
+        if phone and phone != "+919876543210":
+            target_phone = phone
+        else:
+            target_phone = self.test_phone_override if self.test_phone_override else phone
 
         # Format with whatsapp: prefix if not present
         to_address = target_phone if target_phone.startswith("whatsapp:") else f"whatsapp:{target_phone}"
