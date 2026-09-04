@@ -88,6 +88,20 @@ The Firestore Console also provides 1-click index creation URLs in the error mes
 
 ---
 
+## 7. Twilio WhatsApp Webhook Root 405 Delegation & TwiML Synchronous Delivery
+
+**What happened:** When testing inbound WhatsApp language switches (`1` for English, `2` for Hinglish, `3` for Hindi) on mobile devices via ngrok, Twilio sandbox webhooks were configured to hit the root URL (`POST /`). Because FastAPI only registered `/` as a `GET` endpoint, FastAPI responded with `405 Method Not Allowed`, preventing the inbound reply webhook from processing. Furthermore, outbound replies triggered via asynchronous REST calls occasionally lagged behind Twilio's webhook lifecycle.
+
+**Impact:** Inbound WhatsApp replies from mobile phones were silently dropped with HTTP 405 errors, leaving the user with no translated recovery response.
+
+**How we recovered:** 
+1. Added a resilient `POST /` route delegation in `backend/main.py` that intercepts any root-directed webhook calls from misconfigured Twilio sandboxes and forwards them cleanly to `twilio_reply_webhook`.
+2. Upgraded `twilio_reply_webhook` to return synchronous TwiML XML (`<Response><Message>{safe_msg}</Message></Response>`), allowing Twilio to immediately and reliably deliver the translated WhatsApp message in the exact same HTTP roundtrip.
+
+**Lesson:** In external webhook integrations, never assume webhooks will always land on the ideal subpath. Provide defensive root-level routing proxies and leverage native synchronous markup (like TwiML) for atomic round-trip delivery.
+
+---
+
 ## Summary
 
 | # | Failure | Root Cause | Recovery Strategy | Time to Fix |
@@ -98,5 +112,6 @@ The Firestore Console also provides 1-click index creation URLs in the error mes
 | 4 | Pydantic V2 field error | Undeclared model attribute | Explicit field declaration | 5 minutes |
 | 5 | Empty customer phone | Synthetic data lacks phone records | Environment variable fallback | 10 minutes |
 | 6 | React hooks order crash | useState after conditional return | Move hooks before early return | 5 minutes |
+| 7 | Twilio 405 & Webhook Lag | Root POST routing & async delay | Root POST delegation + synchronous TwiML XML | 15 minutes |
 
 > **Core takeaway:** Every failure above was caught and fixed without data loss, duplicate charges, or unsafe autonomous actions. The bounded autonomy architecture ensured that when AI or infrastructure failed, the system degraded to human review rather than making incorrect financial decisions.

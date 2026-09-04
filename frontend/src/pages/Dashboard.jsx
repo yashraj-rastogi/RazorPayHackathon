@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api, formatRupees } from '../api';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis } from 'recharts';
 
@@ -21,6 +22,7 @@ const BUCKET_LABELS = {
 };
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [seeding, setSeeding] = useState(false);
@@ -162,6 +164,61 @@ export default function Dashboard() {
           <button className="btn btn-ghost" onClick={load}>↻ REFRESH</button>
           <button className="btn btn-primary" onClick={handleSeed} disabled={seeding}>
             {seeding ? 'SEEDING DATABASE...' : '⚡ SEED DEMO TELEMETRY'}
+          </button>
+        </div>
+      </div>
+
+      {/* Evaluator Welcome Banner */}
+      <div style={{
+        margin: '0 0 24px 0',
+        padding: '12px 18px',
+        backgroundColor: 'var(--color-bg-surface)',
+        border: 'var(--border-thick)',
+        boxShadow: 'var(--shadow-md)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: '12px',
+        flexWrap: 'wrap',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: 32,
+            height: 32,
+            backgroundColor: 'var(--color-accent)',
+            border: '2px solid var(--color-border)',
+            boxShadow: 'var(--shadow-sm)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '16px',
+            flexShrink: 0
+          }}>
+            📖
+          </div>
+          <div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: '800', color: 'var(--color-dark)', letterSpacing: '0.05em' }}>
+              RAZORPAY BUILD-FOR-BHARAT // TRACK 03 EVALUATION GUIDE
+            </div>
+            <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
+              Explore our Problem Taste, Architecture, Bounded Autonomy Matrix & 7 Real Failure Fixes.
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <button
+            className="btn btn-warning"
+            style={{ padding: '6px 14px', fontSize: '12px', fontWeight: '700' }}
+            onClick={() => navigate('/docs')}
+          >
+            System Architecture & Docs 📖
+          </button>
+          <button
+            className="btn btn-ghost"
+            style={{ padding: '6px 12px', fontSize: '12px' }}
+            onClick={() => navigate('/')}
+          >
+            Landing Page 🌐
           </button>
         </div>
       </div>

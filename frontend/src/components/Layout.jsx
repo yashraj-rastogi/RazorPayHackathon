@@ -3,10 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { api } from '../api';
 
 const NAV_ITEMS = [
-  { path: '/', label: 'Cockpit', icon: '⚡' },
+  { path: '/cockpit', label: 'Cockpit', icon: '⚡' },
   { path: '/cases', label: 'Cases Ledger', icon: '📋' },
   { path: '/review', label: 'Review Queue', icon: '👁', badge: true },
   { path: '/metrics', label: 'Evaluation', icon: '📈' },
+  { path: '/docs', label: 'Docs & Arch', icon: '📖' },
+  { path: '/', label: 'Product Home', icon: '🌐' },
 ];
 
 export function Layout({ children }) {
@@ -24,7 +26,7 @@ export function Layout({ children }) {
     <div className="app-layout bg-grid">
       {/* Desktop Side Rail */}
       <aside className="side-rail">
-        <div className="rail-header">
+        <div className="rail-header" onClick={() => navigate('/cockpit')} style={{ cursor: 'pointer' }}>
           <div className="rail-logo">⚡</div>
           <div className="rail-brand">
             <span className="rail-brand-title">RevGuard</span>
@@ -34,7 +36,7 @@ export function Layout({ children }) {
 
         <nav className="rail-nav">
           {NAV_ITEMS.map(item => {
-            const isActive = location.pathname === item.path;
+            const isActive = location.pathname === item.path || (item.path === '/cockpit' && location.pathname === '/dashboard');
             return (
               <div
                 key={item.path}
@@ -62,7 +64,7 @@ export function Layout({ children }) {
 
       {/* Mobile Top Header */}
       <header className="mobile-header">
-        <div className="mobile-header-brand">
+        <div className="mobile-header-brand" onClick={() => navigate('/cockpit')} style={{ cursor: 'pointer' }}>
           <div className="rail-logo" style={{ width: 28, height: 28, fontSize: 14 }}>⚡</div>
           <span className="mobile-title">RevGuard</span>
         </div>
@@ -83,7 +85,7 @@ export function Layout({ children }) {
       {/* Mobile Bottom Tab Bar */}
       <nav className="bottom-tab-bar">
         {NAV_ITEMS.map(item => {
-          const isActive = location.pathname === item.path;
+          const isActive = location.pathname === item.path || (item.path === '/cockpit' && location.pathname === '/dashboard');
           return (
             <div
               key={item.path}

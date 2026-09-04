@@ -317,18 +317,21 @@ def execute_recovery(case_id: str, phone_override: str | None = None) -> dict:
     }
 
 
-def handle_customer_reply(reply_text: str, case_id: str, customer_id: str) -> dict:
+def handle_customer_reply(reply_text: str, case_id: str, customer_id: str, sender_phone: str | None = None) -> dict:
     """
     Process a customer reply:
-    - Extract intent via Gemini
-    - Store CustomerReplyLog
+    - Check for language switch command (Reply 1/Hindi, 2/Hinglish, 3/English)
+    - If language switch: update customer language_pref, resend message in new language, log audit
+    - Otherwise extract intent via Gemini (STOP, CONFUSED, PAY_NOW, ASK_TO_DELAY, OTHER)
     - Handle STOP → opt-out
     - Handle CONFUSED → flag for review
     - NEVER execute financial actions from reply text alone
     """
     from backend.models.action import CustomerReplyLog, ReplyIntent
 
-    # Get customer language preference
+    clean_text = reply_text.strip().lower()
+
+    # Get customer
     customer_doc = get_document("customers", customer_id) or {}
     language = customer_doc.get("language_pref", "english")
 
@@ -336,11 +339,10 @@ def handle_customer_reply(reply_text: str, case_id: str, customer_id: str) -> di
         action=AuditAction.REPLY_RECEIVED,
         stage="customer",
         case_id=case_id,
-        details={"customer_id": customer_id, "message_length": len(reply_text)},
+        details={"customer_id": customer_id, "message_length": len(reply_text), "sender": sender_phone},
     )
 
-    # 1. Deterministic Language Switch Detection (Reply 1/Hindi, 2/Hinglish, 3/English)
-    clean_text = reply_text.strip().lower()
+    # 1. Deterministic Language Selection
     target_lang = None
     if clean_text in ("1", "hindi", "हिंदी", "हिन्दी", "hi"):
         target_lang = "hindi"
@@ -386,7 +388,7 @@ def handle_customer_reply(reply_text: str, case_id: str, customer_id: str) -> di
         translated_message = _build_fallback_message(customer_name, amount_rupees, recovery_url, target_lang)
 
         # Dispatch translated message back to customer via Twilio
-        send_phone = customer_doc.get("phone") or config.TWILIO_TEST_PHONE_OVERRIDE
+        send_phone = sender_phone or customer_doc.get("phone") or config.TWILIO_TEST_PHONE_OVERRIDE
         if send_phone:
             try:
                 from backend.providers.messaging_mock import get_messaging_provider

@@ -223,17 +223,25 @@ async def twilio_reply_webhook(request: Request):
         return Response(content="<Response></Response>", media_type="application/xml", status_code=200)
 
     # Process reply via recovery service
+    result = {}
     try:
         from backend.services.recovery import handle_customer_reply
         result = handle_customer_reply(
             reply_text=body,
             case_id=case_id,
             customer_id=customer_id,
+            sender_phone=phone_clean,
         )
         logger.info("Reply processed for case %s: intent=%s, confidence=%.2f",
-                     case_id, result["intent"], result["confidence"])
+                     case_id, result.get("intent"), result.get("confidence", 0))
     except Exception as exc:
         logger.error("Error processing customer reply for case %s: %s", case_id, exc)
 
-    # Return TwiML empty response (Twilio expects XML)
-    return Response(content="<Response></Response>", media_type="application/xml", status_code=200)
+    # Return TwiML response: if a reply message was generated, Twilio dispatches it directly to the sender
+    if result.get("message"):
+        from xml.sax.saxutils import escape
+        safe_msg = escape(result["message"])
+        twiml = f'<?xml version="1.0" encoding="UTF-8"?><Response><Message>{safe_msg}</Message></Response>'
+        return Response(content=twiml, media_type="application/xml", status_code=200)
+
+    return Response(content='<?xml version="1.0" encoding="UTF-8"?><Response></Response>', media_type="application/xml", status_code=200)

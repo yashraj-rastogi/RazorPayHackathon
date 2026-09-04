@@ -37,6 +37,10 @@ async def health():
     return {"status": "ok", "service": "revguard-api"}
 
 
+from fastapi import Request
+from backend.routers.webhooks import twilio_reply_webhook
+
+
 @app.get("/")
 async def root():
     return {
@@ -44,3 +48,13 @@ async def root():
         "version": "1.0.0",
         "docs": "/docs",
     }
+
+
+@app.post("/")
+async def root_post_handler(request: Request):
+    """
+    Handle POST / directly.
+    If Twilio sends webhook to the root ngrok URL instead of /api/v1/webhooks/twilio-reply,
+    delegate directly to twilio_reply_webhook so inbound replies are never lost.
+    """
+    return await twilio_reply_webhook(request)
