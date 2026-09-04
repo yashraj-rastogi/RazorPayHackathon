@@ -16,39 +16,26 @@ RevGuard monitors every failure, diagnoses the root cause, and automatically rec
 
 ## Architecture
 
-```
-Revenue Event (failed recurring charge)
-         │
-   Layer A: Ingestion
-   • Idempotency check (event_id dedup)
-   • Store to Firestore revenue_events
-         │
-   Layer B: Diagnosis (deterministic first)
-   • Known codes → deterministic mapping table (no AI)
-   • Unknown codes → Gemini (Prompt A)
-   • Fallback if Gemini unavailable
-         │
-   Layer C: Scoring
-   • recovery_probability = f(bucket, attempt_count, amount)
-   • priority_score = amount_rupees × probability
-         │
-   Layer D: Policy Engine (deterministic rules)
-   • BLOCKED  ← payment succeeded / mandate inactive / opted out
-   • REVIEW   ← confidence < 0.85 / amount ≥ Rs.10,000 / retries ≥ 3
-   • AUTO     ← all checks pass
-         │
-   Layer E: Recovery Action
-   • Create Razorpay Payment Link (Test Mode)
-   • Generate customer message (Gemini Prompt B)
-   • Send via WhatsApp (Mock / Twilio)
-         │
-   Layer F: Verification (Webhook)
-   • payment_link.paid → RECOVERED
-   • Idempotent — duplicate webhooks ignored
-         │
-   Layer G: Audit
-   • Append-only audit_logs collection
-   • Every step logged with actor, stage, timestamp
+```mermaid
+flowchart TD
+    A["⚡ Recurring Payment Failure<br/>(UPI Autopay / Subscription)"] --> B["Layer A — Ingestion<br/>Idempotency check · event_id dedup"]
+    B --> C{"Layer B — Diagnosis"}
+    C -->|Known Code| D["Deterministic Mapping Table<br/>(No AI call)"]
+    C -->|Ambiguous Code| E["Gemini Prompt A<br/>Structured JSON output"]
+    C -->|Gemini Unavailable| F["Fallback → unknown bucket<br/>confidence: 0.5"]
+    D --> G["Layer C — Scoring<br/>priority = amount × recovery_probability"]
+    E --> G
+    F --> G
+    G --> H{"Layer D — Policy Engine<br/>(Deterministic Rules)"}
+    H -->|"Payment OK / Opted Out / Mandate Dead"| I["🚫 BLOCKED"]
+    H -->|"Low Confidence / High Amount / Retries ≥ 3"| J["👁 QUEUE_FOR_REVIEW"]
+    H -->|"All Checks Pass"| K["✅ AUTO"]
+    K --> L["Layer E — Recovery Action<br/>Razorpay Payment Link + Gemini Message"]
+    L --> M["📱 WhatsApp Outreach<br/>(Twilio / Mock)"]
+    M --> N["Layer F — Webhook Verification<br/>payment_link.paid → RECOVERED"]
+    N --> O["Layer G — Audit Trail<br/>Append-only · Actor stamps"]
+    J --> O
+    I --> O
 ```
 
 ### AI Judgment: Where Gemini Is Used
@@ -56,7 +43,7 @@ Revenue Event (failed recurring charge)
 | Prompt | Purpose | What it may NOT do |
 |---|---|---|
 | A — Diagnose Failure | Classify ambiguous gateway messages | Override policy thresholds |
-| B — Recovery Message | Generate customer-facing WhatsApp text | Invent fees or deadlines |
+| B — Recovery Message | Generate customer-facing WhatsApp text (EN / HI / Hinglish) | Invent fees or deadlines |
 | C — Reply Intent | Extract intent from customer replies | Trigger financial actions |
 
 **Core thesis**: AI handles ambiguity; deterministic software handles financial correctness.
@@ -171,7 +158,9 @@ ngrok http 8000
 | GET | `/api/v1/cases/{id}/message` | Message preview |
 | GET | `/api/v1/metrics` | Evaluation metrics |
 | POST | `/api/v1/simulate/failure` | Demo failure injection |
-| POST | `/api/v1/webhooks/razorpay` | Webhook receiver |
+| POST | `/api/v1/simulate/pitch-scenario` | 1-click judge demo sequence |
+| POST | `/api/v1/webhooks/razorpay` | Razorpay webhook receiver |
+| POST | `/api/v1/webhooks/twilio-reply` | Inbound WhatsApp reply handler |
 
 Full interactive docs at: `http://localhost:8000/docs`
 

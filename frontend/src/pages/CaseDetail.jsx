@@ -533,9 +533,37 @@ export default function CaseDetail() {
 
       {activeTab === 'audit' && (
         <div className="card">
-          <div className="section-title">
-            <span>📜</span>
-            <span>Immutable Append-Only Audit Trail</span>
+          <div className="section-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span>📜</span>
+              <span>Immutable Append-Only Audit Trail</span>
+            </div>
+            {audit?.events?.length > 0 && (
+              <button
+                className="btn btn-ghost"
+                style={{ fontSize: '11px', padding: '4px 12px' }}
+                onClick={() => {
+                  const certificate = {
+                    case_id: caseId,
+                    export_timestamp: new Date().toISOString(),
+                    system: 'RevGuard Audit Subsystem',
+                    version: 'v1.0',
+                    total_events: audit.events.length,
+                    trail: audit.events,
+                    attestation: 'This audit certificate is generated from an append-only event log. Each entry is immutable once written.',
+                  };
+                  const blob = new Blob([JSON.stringify(certificate, null, 2)], { type: 'application/json' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `revguard_audit_${caseId}.json`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+              >
+                📋 EXPORT AUDIT CERTIFICATE
+              </button>
+            )}
           </div>
           <AuditTimeline audit={audit} />
         </div>

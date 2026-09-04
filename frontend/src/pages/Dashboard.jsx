@@ -40,6 +40,16 @@ export default function Dashboard() {
 
   useEffect(() => { load(); }, []);
 
+  // Auto-refresh dashboard every 10 seconds for live demo
+  useEffect(() => {
+    const interval = setInterval(() => {
+      api.getDashboard()
+        .then(setData)
+        .catch(console.error);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSeed = async () => {
     setSeeding(true);
     setSeedMsg('');

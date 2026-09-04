@@ -29,6 +29,26 @@ logger = logging.getLogger(__name__)
 MERCHANT_NAME = "DemoMerchant"
 
 
+def _build_fallback_message(name: str, amount_rupees: float, link: str, language: str) -> str:
+    """Deterministic multilingual recovery message (used when Gemini is unavailable)."""
+    amt = f"₹{amount_rupees:,.0f}"
+    if language == "hindi":
+        return (
+            f"नमस्ते {name}, आपका {amt} का सब्सक्रिप्शन भुगतान प्रोसेस नहीं हो सका। "
+            f"कृपया इस लिंक से भुगतान पूरा करें: {link}"
+        )
+    elif language == "hinglish":
+        return (
+            f"Hi {name}, aapka {amt} ka subscription payment process nahi ho paya. "
+            f"Please is link se payment complete karein: {link}"
+        )
+    else:
+        return (
+            f"Hi {name}, your subscription payment of Rs.{amount_rupees:,.0f} "
+            f"could not be processed. Please use this link to complete payment: {link}"
+        )
+
+
 def _build_idempotency_key(case_id: str, action_type: str, attempt_count: int) -> str:
     """
     Deterministic idempotency key.
@@ -199,15 +219,13 @@ def execute_recovery(case_id: str) -> dict:
 
     except Exception as exc:
         logger.warning("Gemini message generation failed for case %s: %s", case_id, exc)
-        # Fallback: simple deterministic message
+        # Fallback: deterministic multilingual message
         amount_rupees = case.amount / 100
-        bucket = case.diagnosis.bucket if case.diagnosis else "payment"
+        lang = customer.language_pref or "english"
+        fallback_msg = _build_fallback_message(customer.name, amount_rupees, payment_link_url, lang)
         message_data = {
-            "language": customer.language_pref,
-            "message": (
-                f"Hi {customer.name}, your subscription payment of Rs.{amount_rupees:,.0f} "
-                f"could not be processed. Please use this link to complete payment: {payment_link_url}"
-            ),
+            "language": lang,
+            "message": fallback_msg,
             "tone": "polite",
             "contains_factual_claims_only": True,
             "prompt_version": "fallback_v1",

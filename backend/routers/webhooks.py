@@ -145,3 +145,79 @@ async def _handle_payment_link_paid(payload: dict):
     except Exception as exc:
         logger.error("Error handling payment_link.paid webhook: %s", exc)
         # Do NOT re-raise — we must return 200
+
+
+@router.post("/twilio-reply")
+async def twilio_reply_webhook(request: Request):
+    """
+    Handle inbound WhatsApp replies from Twilio.
+
+    Twilio sends form-urlencoded POST with:
+    - Body: the message text
+    - From: whatsapp:+91...
+    - To: whatsapp:+14155238886
+
+    We extract intent (PAY_NOW, STOP, ASK_TO_DELAY, CONFUSED, OTHER)
+    and act accordingly. STOP → opt-out. CONFUSED → flag for review.
+    PAY_NOW / ASK_TO_DELAY → log only (no financial action).
+    """
+    form = await request.form()
+    body = form.get("Body", "")
+    from_number = form.get("From", "")
+
+    if not body:
+        logger.warning("Twilio reply webhook: empty body.")
+        return Response(content="<Response></Response>", media_type="application/xml", status_code=200)
+
+    logger.info("Inbound WhatsApp reply from %s: %s", from_number, body[:100])
+
+    # Find the most recent case associated with this phone number
+    # Look up customer by phone
+    phone_clean = from_number.replace("whatsapp:", "")
+    case_id = None
+    customer_id = None
+
+    try:
+        customers = query_collection(
+            "customers",
+            filters=[("phone", "==", phone_clean)],
+            limit=1,
+        )
+        if customers:
+            customer_id = customers[0].get("customer_id")
+            # Find most recent open case for this customer
+            cases = query_collection(
+                "recovery_cases",
+                filters=[("customer_id", "==", customer_id)],
+                limit=1,
+            )
+            if cases:
+                case_id = cases[0].get("case_id")
+    except Exception as exc:
+        logger.warning("Could not find customer/case for phone %s: %s", phone_clean, exc)
+
+    if not case_id or not customer_id:
+        logger.info("No matching case found for reply from %s — logging only.", from_number)
+        write_audit(
+            action=AuditAction.REPLY_RECEIVED,
+            stage="customer",
+            case_id=case_id or "UNKNOWN",
+            details={"from": from_number, "body_preview": body[:80], "matched": False},
+        )
+        return Response(content="<Response></Response>", media_type="application/xml", status_code=200)
+
+    # Process reply via recovery service
+    try:
+        from backend.services.recovery import handle_customer_reply
+        result = handle_customer_reply(
+            reply_text=body,
+            case_id=case_id,
+            customer_id=customer_id,
+        )
+        logger.info("Reply processed for case %s: intent=%s, confidence=%.2f",
+                     case_id, result["intent"], result["confidence"])
+    except Exception as exc:
+        logger.error("Error processing customer reply for case %s: %s", case_id, exc)
+
+    # Return TwiML empty response (Twilio expects XML)
+    return Response(content="<Response></Response>", media_type="application/xml", status_code=200)
