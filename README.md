@@ -8,9 +8,30 @@
 
 ## Problem Statement
 
-Recurring payments fail. Banks time out, funds run low, mandates lapse. Each failure is lost revenue — and most merchants have no systematic way to recover it safely.
+Recurring payments fail. Banks time out, funds run low, mandates lapse. In fact, **over 40% of subscription churn is involuntary** — caused by technical glitches rather than customer intent to cancel.
 
-RevGuard monitors every failure, diagnoses the root cause, and automatically recovers safe cases via a Razorpay Payment Link while routing uncertain or high-value cases to a human review queue.
+- **For Businesses:** Each failure is silent revenue leakage. Most merchants lack an automated, safe system to recover it without expensive human call centers or spamming customers.
+- **For Everyday Consumers:** Subscribers face abrupt service interruptions (e.g. EdTech access locked, health insurance lapsing, OTT suspended) followed by aggressive, robotic collection emails.
+
+RevGuard is an intelligent recovery controller that monitors failed recurring debits, diagnoses the root cause, and automatically recovers safe cases via Razorpay Payment Links on WhatsApp while routing uncertain or high-value cases to a human review queue.
+
+---
+
+## Ecosystem Architecture & Real-World Data Sourcing
+
+RevGuard is **B2B middleware** designed for merchants running recurring billing and UPI Autopay on Razorpay:
+
+- **Where do we get failed payment data?**  
+  Directly from Razorpay's Core Gateway via automated webhooks (`POST /api/v1/webhooks/razorpay` on events like `payment.failed`, `subscription.charged_failed`). The payload supplies transaction amount, exact failure code, attempt count, and subscription ID.
+- **How do we get the customer's WhatsApp number?**  
+  Captured during the customer's initial signup and mandate checkout on the merchant app. Razorpay's webhook delivers the customer's registered phone number (`contact` in E.164 format) alongside their explicit regulatory WhatsApp notification consent (`whatsapp_opt_in: true`).
+- **How does RevGuard protect the everyday consumer?**
+  1. **Zero Service Disruption:** Recovers failed debits before subscriptions get abruptly terminated.
+  2. **Empathetic, Non-Aggressive Communication:** Generates polite, transparent messages in English, Hindi, or Hinglish on WhatsApp explaining *why* the auto-debit failed.
+  3. **1-Click WhatsApp Resolution:** Delivers a secure Razorpay Payment Link for instant 10-second payment via Google Pay, PhonePe, or UPI.
+  4. **Consumer Autonomy & Consent:** Replying `"STOP"` immediately blocks outreach and suppresses further charges.
+
+👉 *Read the full [Business, Consumer & Data Architecture Guide](docs/business-and-data-architecture.md) for sequence diagrams and payload structures.*
 
 ---
 
