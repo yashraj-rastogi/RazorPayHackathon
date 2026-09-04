@@ -159,3 +159,41 @@ class TestPaymentLinkPaid:
                 headers={"Content-Type": "application/json", "X-Razorpay-Signature": "x"},
             )
         assert response.status_code == 200
+
+
+class TestTwilioReplyWebhook:
+    def test_inbound_language_switch_hindi(self, client):
+        mock_customer = {"customer_id": "cust_001", "phone": "+919876543210", "name": "Aarav", "language_pref": "english"}
+        mock_case = {"case_id": "case_001", "customer_id": "cust_001", "amount": 100000}
+        mock_action = {"action_id": "act_001", "case_id": "case_001", "recovery_url": "https://rzp.io/i/test"}
+
+        with patch("backend.routers.webhooks.query_collection", side_effect=[[mock_customer], [mock_case]]), \
+             patch("backend.services.recovery.query_collection", return_value=[mock_action]), \
+             patch("backend.services.recovery.get_document", side_effect=[mock_customer, mock_case]), \
+             patch("backend.services.recovery.update_document") as mock_update, \
+             patch("backend.services.recovery.set_document"), \
+             patch("backend.services.audit.write_audit"):
+            response = client.post(
+                "/api/v1/webhooks/twilio-reply",
+                data={"From": "whatsapp:+919876543210", "Body": "1"},
+            )
+        assert response.status_code == 200
+        assert any(call.args[2].get("language_pref") == "hindi" for call in mock_update.call_args_list if len(call.args) > 2)
+
+    def test_inbound_language_switch_hinglish(self, client):
+        mock_customer = {"customer_id": "cust_001", "phone": "+919876543210", "name": "Aarav", "language_pref": "english"}
+        mock_case = {"case_id": "case_001", "customer_id": "cust_001", "amount": 100000}
+        mock_action = {"action_id": "act_001", "case_id": "case_001", "recovery_url": "https://rzp.io/i/test"}
+
+        with patch("backend.routers.webhooks.query_collection", side_effect=[[mock_customer], [mock_case]]), \
+             patch("backend.services.recovery.query_collection", return_value=[mock_action]), \
+             patch("backend.services.recovery.get_document", side_effect=[mock_customer, mock_case]), \
+             patch("backend.services.recovery.update_document") as mock_update, \
+             patch("backend.services.recovery.set_document"), \
+             patch("backend.services.audit.write_audit"):
+            response = client.post(
+                "/api/v1/webhooks/twilio-reply",
+                data={"From": "whatsapp:+919876543210", "Body": "2"},
+            )
+        assert response.status_code == 200
+        assert any(call.args[2].get("language_pref") == "hinglish" for call in mock_update.call_args_list if len(call.args) > 2)

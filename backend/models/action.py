@@ -55,6 +55,7 @@ class ReplyIntent(str, Enum):
     ASK_TO_DELAY = "ASK_TO_DELAY"
     STOP = "STOP"
     CONFUSED = "CONFUSED"
+    CHANGE_LANGUAGE = "CHANGE_LANGUAGE"
     OTHER = "OTHER"
 
 

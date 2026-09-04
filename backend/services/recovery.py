@@ -29,24 +29,37 @@ logger = logging.getLogger(__name__)
 MERCHANT_NAME = "DemoMerchant"
 
 
-def _build_fallback_message(name: str, amount_rupees: float, link: str, language: str) -> str:
+LANGUAGE_PROMPT_FOOTER = (
+    "\n\n---\n"
+    "🌐 Change Language / भाषा बदलें:\n"
+    "Reply 1 for हिंदी\n"
+    "Reply 2 for Hinglish\n"
+    "Reply 3 for English"
+)
+
+
+def _build_fallback_message(name: str, amount_rupees: float, link: str, language: str, include_footer: bool = True) -> str:
     """Deterministic multilingual recovery message (used when Gemini is unavailable)."""
     amt = f"₹{amount_rupees:,.0f}"
-    if language == "hindi":
-        return (
+    lang = (language or "english").lower()
+    if lang == "hindi":
+        base = (
             f"नमस्ते {name}, आपका {amt} का सब्सक्रिप्शन भुगतान प्रोसेस नहीं हो सका। "
             f"कृपया इस लिंक से भुगतान पूरा करें: {link}"
         )
-    elif language == "hinglish":
-        return (
+    elif lang == "hinglish":
+        base = (
             f"Hi {name}, aapka {amt} ka subscription payment process nahi ho paya. "
             f"Please is link se payment complete karein: {link}"
         )
     else:
-        return (
+        base = (
             f"Hi {name}, your subscription payment of Rs.{amount_rupees:,.0f} "
             f"could not be processed. Please use this link to complete payment: {link}"
         )
+    if include_footer:
+        return base + LANGUAGE_PROMPT_FOOTER
+    return base
 
 
 def _build_idempotency_key(case_id: str, action_type: str, attempt_count: int) -> str:
@@ -234,6 +247,11 @@ def execute_recovery(case_id: str, phone_override: str | None = None) -> dict:
         }
 
     # 7. Store message in action doc
+    raw_msg = message_data.get("message", "")
+    if "Change Language" not in raw_msg and "भाषा बदलें" not in raw_msg:
+        raw_msg = raw_msg + LANGUAGE_PROMPT_FOOTER
+        message_data["message"] = raw_msg
+
     customer_message = CustomerMessage(
         language=message_data.get("language", "english"),
         message=message_data["message"],
@@ -320,6 +338,93 @@ def handle_customer_reply(reply_text: str, case_id: str, customer_id: str) -> di
         case_id=case_id,
         details={"customer_id": customer_id, "message_length": len(reply_text)},
     )
+
+    # 1. Deterministic Language Switch Detection (Reply 1/Hindi, 2/Hinglish, 3/English)
+    clean_text = reply_text.strip().lower()
+    target_lang = None
+    if clean_text in ("1", "hindi", "हिंदी", "हिन्दी", "hi"):
+        target_lang = "hindi"
+    elif clean_text in ("2", "hinglish"):
+        target_lang = "hinglish"
+    elif clean_text in ("3", "english", "en"):
+        target_lang = "english"
+    elif "hindi" in clean_text or "हिंदी" in clean_text:
+        target_lang = "hindi"
+    elif "hinglish" in clean_text:
+        target_lang = "hinglish"
+    elif "english" in clean_text:
+        target_lang = "english"
+
+    if target_lang:
+        logger.info("Language switch requested for case %s: %s", case_id, target_lang)
+        update_document("customers", customer_id, {"language_pref": target_lang})
+        write_audit(
+            action=AuditAction.LANGUAGE_UPDATED,
+            stage="customer",
+            case_id=case_id,
+            details={"new_language": target_lang, "raw_message": reply_text},
+        )
+
+        # Retrieve case and existing recovery link
+        case_doc = get_document("recovery_cases", case_id) or {}
+        amount_rupees = (case_doc.get("amount") or 0) / 100
+        customer_name = customer_doc.get("name", "Valued Customer")
+
+        # Find existing recovery action to reuse link
+        actions = query_collection("recovery_actions", filters=[("case_id", "==", case_id)], limit=5)
+        recovery_url = ""
+        action_id = None
+        for act in actions:
+            if act.get("recovery_url"):
+                recovery_url = act["recovery_url"]
+                action_id = act.get("action_id")
+                break
+        if not recovery_url:
+            recovery_url = "https://rzp.io/l/revguard-demo"
+
+        # Synthesize message in new language
+        translated_message = _build_fallback_message(customer_name, amount_rupees, recovery_url, target_lang)
+
+        # Dispatch translated message back to customer via Twilio
+        send_phone = customer_doc.get("phone") or config.TWILIO_TEST_PHONE_OVERRIDE
+        if send_phone:
+            try:
+                from backend.providers.messaging_mock import get_messaging_provider
+                messaging = get_messaging_provider()
+                logger.info("Dispatching translated message (%s) to %s", target_lang, send_phone)
+                messaging.send(phone=send_phone, message=translated_message, case_id=case_id)
+            except Exception as exc:
+                logger.warning("Failed to dispatch translated WhatsApp message: %s", exc)
+
+        # Update stored action so cockpit UI immediately updates
+        if action_id:
+            update_document("recovery_actions", action_id, {
+                "customer_message.language": target_lang,
+                "customer_message.message": translated_message,
+            })
+
+        reply_id = f"reply_{uuid.uuid4().hex[:10]}"
+        reply_log = CustomerReplyLog(
+            reply_id=reply_id,
+            case_id=case_id,
+            customer_id=customer_id,
+            raw_message=reply_text,
+            intent=ReplyIntent.CHANGE_LANGUAGE,
+            promised_date=None,
+            confidence=0.99,
+            prompt_version="deterministic_language_v1",
+            received_at=now_utc(),
+            processed_at=now_utc(),
+        )
+        set_document("customer_replies", reply_id, reply_log.model_dump(mode="json"))
+
+        return {
+            "reply_id": reply_id,
+            "intent": ReplyIntent.CHANGE_LANGUAGE,
+            "language": target_lang,
+            "confidence": 0.99,
+            "message": translated_message,
+        }
 
     # Extract intent via Gemini
     intent_data = {"intent": "OTHER", "promised_date": None, "confidence": 0.5}

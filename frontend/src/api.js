@@ -47,6 +47,10 @@ export const api = {
     method: 'POST',
     body: JSON.stringify(payload),
   }),
+  simulateCustomerReply: (case_id, message) => apiFetch('/api/v1/simulate/customer-reply', {
+    method: 'POST',
+    body: JSON.stringify({ case_id, message }),
+  }),
 };
 
 // Formatting helpers

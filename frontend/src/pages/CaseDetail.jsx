@@ -16,8 +16,8 @@ function PolicyChecklist({ policy }) {
           {isAuto
             ? 'Deterministic Verification: Pass Criteria'
             : isBlocked
-            ? 'Safety Interlock: Block Triggers'
-            : 'Human Escalate: Review Thresholds'}
+              ? 'Safety Interlock: Block Triggers'
+              : 'Human Escalate: Review Thresholds'}
         </span>
       </div>
       <div className="checklist">
@@ -109,13 +109,32 @@ function AuditTimeline({ audit }) {
 function MessagePreview({ caseId }) {
   const [msg, setMsg] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [switching, setSwitching] = useState(false);
 
-  useEffect(() => {
+  const fetchMsg = () => {
+    setLoading(true);
     api.getCaseMessage(caseId)
       .then(setMsg)
       .catch(() => setMsg(null))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchMsg();
   }, [caseId]);
+
+  const handleSimulateLanguageSwitch = async (replyCode) => {
+    setSwitching(true);
+    try {
+      await api.simulateCustomerReply(caseId, replyCode);
+      const updated = await api.getCaseMessage(caseId);
+      setMsg(updated);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSwitching(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -154,13 +173,63 @@ function MessagePreview({ caseId }) {
         }}>
           SECURE OUTREACH PAYLOAD
         </div>
-        <p style={{ marginTop: 6 }}>{msg.message}</p>
+        <p style={{ marginTop: 6, whiteSpace: 'pre-wrap' }}>{msg.message}</p>
       </div>
       <div className="message-meta">
         <span>🌐 LANGUAGE: {msg.language?.toUpperCase()}</span>
         <span>🎨 TONE: {msg.tone?.toUpperCase()}</span>
         <span>📋 PROMPT: {msg.prompt_version}</span>
         <span>📤 DISPATCH: {msg.sent ? `SENT AT ${formatDate(msg.sent_at)}` : 'PENDING'}</span>
+      </div>
+
+      {/* Interactive WhatsApp Language Switcher Buttons (Judge / Demo Quick Test) */}
+      <div style={{
+        marginTop: 20,
+        padding: '14px 16px',
+        backgroundColor: 'var(--color-bg-surface)',
+        border: '1px solid var(--color-border)',
+        borderRadius: 'var(--radius-sm)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+      }}>
+        <div>
+          <div style={{ fontSize: '11px', fontWeight: '800', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', color: 'var(--color-dark)' }}>
+            📱 Interactive WhatsApp Language Switcher
+          </div>
+          <div style={{ fontSize: '11px', color: 'var(--color-text-secondary)', marginTop: 2 }}>
+            Simulate customer replying on WhatsApp with 1 / 2 / 3 to dynamically translate outreach
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <button
+            className="btn btn-ghost"
+            disabled={switching}
+            style={{ fontSize: '11px', padding: '6px 12px', fontWeight: '700', borderColor: msg?.language === 'hindi' ? 'var(--color-accent)' : undefined }}
+            onClick={() => handleSimulateLanguageSwitch('1')}
+          >
+            {switching ? '...' : '🇮🇳 Reply "1" (हिंदी)'}
+          </button>
+          <button
+            className="btn btn-ghost"
+            disabled={switching}
+            style={{ fontSize: '11px', padding: '6px 12px', fontWeight: '700', borderColor: msg?.language === 'hinglish' ? 'var(--color-accent)' : undefined }}
+            onClick={() => handleSimulateLanguageSwitch('2')}
+          >
+            {switching ? '...' : '🇮🇳 Reply "2" (Hinglish)'}
+          </button>
+          <button
+            className="btn btn-ghost"
+            disabled={switching}
+            style={{ fontSize: '11px', padding: '6px 12px', fontWeight: '700', borderColor: msg?.language === 'english' ? 'var(--color-accent)' : undefined }}
+            onClick={() => handleSimulateLanguageSwitch('3')}
+          >
+            {switching ? '...' : '🇬🇧 Reply "3" (English)'}
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -668,7 +737,7 @@ export default function CaseDetail() {
               marginBottom: 20,
             }}>
               <strong>💡 Testing with Your Personal WhatsApp?</strong><br />
-              If your phone has not joined this Twilio Sandbox before, open WhatsApp and send <code>join breakfast-mountain</code> to <code>+1 415 523 8886</code> first.
+              If your phone has not joined this Twilio Sandbox before, open WhatsApp and send <code>join pile-cup</code> to <code>+1 415 523 8886</code> first.
             </div>
 
             <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>

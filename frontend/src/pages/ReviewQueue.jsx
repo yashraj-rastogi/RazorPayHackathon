@@ -270,7 +270,7 @@ export default function ReviewQueue() {
               marginBottom: 20,
             }}>
               <strong>💡 Testing with Your Personal WhatsApp?</strong><br />
-              If your phone has not joined this Twilio Sandbox before, open WhatsApp and send <code>join breakfast-mountain</code> to <code>+1 415 523 8886</code> first.
+              If your phone has not joined this Twilio Sandbox before, open WhatsApp and send <code>join pile-cup</code> to <code>+1 415 523 8886</code> first.
             </div>
 
             <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>

@@ -169,3 +169,26 @@ async def pitch_scenario(payload: Optional[PitchScenarioRequest] = None):
             "status": recovery_result.get("status"),
         }
     }
+
+
+class CustomerReplySimulateRequest(BaseModel):
+    case_id: str
+    message: str
+
+
+@router.post("/customer-reply")
+async def simulate_customer_reply(req: CustomerReplySimulateRequest):
+    """Simulate inbound customer WhatsApp reply (e.g. language change '1' or 'STOP')."""
+    from backend.db.firestore import get_document
+    case_doc = get_document("recovery_cases", req.case_id)
+    if not case_doc:
+        raise HTTPException(status_code=404, detail="Case not found")
+
+    customer_id = case_doc.get("customer_id", "")
+    from backend.services.recovery import handle_customer_reply
+    result = handle_customer_reply(
+        reply_text=req.message,
+        case_id=req.case_id,
+        customer_id=customer_id,
+    )
+    return result
