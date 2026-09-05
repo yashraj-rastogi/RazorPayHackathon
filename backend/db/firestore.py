@@ -12,14 +12,22 @@ from typing import Optional, Any
 
 logger = logging.getLogger(__name__)
 
-# Try to import Firebase Admin; fall back gracefully for unit tests
+# Try importing google.cloud.firestore first (lightweight, ~50MB, no google-api-python-client)
+# If not found, try firebase_admin.
+_FIREBASE_AVAILABLE = True
 try:
-    import firebase_admin
-    from firebase_admin import credentials, firestore as fs
-    _FIREBASE_AVAILABLE = True
+    from google.cloud import firestore as fs
+    from google.oauth2 import service_account
+    _MODE = "google_cloud"
 except ImportError:
-    _FIREBASE_AVAILABLE = False
-    logger.warning("firebase_admin not installed; Firestore calls will no-op.")
+    try:
+        import firebase_admin
+        from firebase_admin import credentials, firestore as fs
+        _MODE = "firebase_admin"
+    except ImportError:
+        _FIREBASE_AVAILABLE = False
+        _MODE = "none"
+        logger.warning("Neither google-cloud-firestore nor firebase_admin installed; Firestore calls will no-op.")
 
 
 _db = None
@@ -31,23 +39,42 @@ def get_db():
     if _db is not None:
         return _db
 
-    if not _FIREBASE_AVAILABLE:
-        raise RuntimeError("firebase_admin is not installed. Run: pip install firebase-admin")
+    if not _FIREBASE_AVAILABLE or _MODE == "none":
+        raise RuntimeError("Neither google-cloud-firestore nor firebase-admin is installed.")
 
+    project_id = os.getenv("FIRESTORE_PROJECT_ID")
+    cred_json = os.getenv("FIREBASE_CREDENTIALS_JSON") or os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY")
+    cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+
+    cred_dict = None
+    if cred_json:
+        import json
+        try:
+            cred_dict = json.loads(cred_json)
+        except Exception:
+            import base64
+            cred_dict = json.loads(base64.b64decode(cred_json).decode("utf-8"))
+
+    if _MODE == "google_cloud":
+        from google.oauth2 import service_account
+        if cred_dict:
+            creds = service_account.Credentials.from_service_account_info(cred_dict)
+            _db = fs.Client(project=project_id or cred_dict.get("project_id"), credentials=creds)
+        elif cred_path and os.path.exists(cred_path):
+            _db = fs.Client.from_service_account_json(cred_path, project=project_id)
+        else:
+            local_fallback = os.path.join(os.getcwd(), "rev-gaurd-firebase-adminsdk-fbsvc-6a7b4f0363.json")
+            if os.path.exists(local_fallback):
+                _db = fs.Client.from_service_account_json(local_fallback, project=project_id)
+            else:
+                _db = fs.Client(project=project_id)
+        return _db
+
+    # Fallback for firebase_admin
     if not firebase_admin._apps:
-        cred_json = os.getenv("FIREBASE_CREDENTIALS_JSON") or os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY")
-        cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-
         cred = None
-        if cred_json:
-            import json
-            try:
-                cred_dict = json.loads(cred_json)
-                cred = credentials.Certificate(cred_dict)
-            except Exception:
-                import base64
-                cred_dict = json.loads(base64.b64decode(cred_json).decode("utf-8"))
-                cred = credentials.Certificate(cred_dict)
+        if cred_dict:
+            cred = credentials.Certificate(cred_dict)
         elif cred_path and os.path.exists(cred_path):
             cred = credentials.Certificate(cred_path)
         else:
@@ -56,7 +83,6 @@ def get_db():
                 cred = credentials.Certificate(local_fallback)
             else:
                 cred = credentials.ApplicationDefault()
-
         firebase_admin.initialize_app(cred, {"projectId": project_id})
 
     _db = fs.client()

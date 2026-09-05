@@ -36,13 +36,15 @@ class GeminiClient:
     """
 
     def __init__(self):
+        self._genai = None
+        self._model = None
         try:
             import google.generativeai as genai
             genai.configure(api_key=config.GEMINI_API_KEY)
             self._genai = genai
             self._model = genai.GenerativeModel(config.GEMINI_MODEL)
         except ImportError:
-            raise GeminiError("google-generativeai package not installed. Run: pip install google-generativeai")
+            logger.info("google-generativeai SDK not present; using direct Gemini REST API.")
 
     def _load_prompt(self, filename: str) -> str:
         path = PROMPT_DIR / filename
@@ -52,14 +54,37 @@ class GeminiClient:
 
     def _call(self, system_prompt: str, user_content: str) -> str:
         """Make a Gemini API call and return raw text response."""
+        if self._model:
+            try:
+                response = self._model.generate_content(
+                    [
+                        {"role": "user", "parts": [f"{system_prompt}\n\n---\nInput:\n{user_content}"]},
+                    ],
+                    generation_config={"response_mime_type": "application/json"},
+                )
+                return response.text
+            except Exception as exc:
+                logger.warning(f"Gemini SDK call failed, falling back to direct REST: {exc}")
+
         try:
-            response = self._model.generate_content(
-                [
-                    {"role": "user", "parts": [f"{system_prompt}\n\n---\nInput:\n{user_content}"]},
+            import requests
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{config.GEMINI_MODEL}:generateContent?key={config.GEMINI_API_KEY}"
+            payload = {
+                "contents": [
+                    {
+                        "role": "user",
+                        "parts": [{"text": f"{system_prompt}\n\n---\nInput:\n{user_content}"}],
+                    }
                 ],
-                generation_config={"response_mime_type": "application/json"},
-            )
-            return response.text
+                "generationConfig": {
+                    "responseMimeType": "application/json"
+                }
+            }
+            res = requests.post(url, json=payload, timeout=20)
+            if not res.ok:
+                raise GeminiError(f"Gemini REST call failed ({res.status_code}): {res.text}")
+            data = res.json()
+            return data["candidates"][0]["content"]["parts"][0]["text"]
         except Exception as exc:
             raise GeminiError(f"Gemini API call failed: {exc}") from exc
 
