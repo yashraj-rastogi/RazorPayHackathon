@@ -1,0 +1,10 @@
+{
+  "name": "revguard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RevGuard — Autonomous, bounded-AI revenue recovery system built for Razorpay Buildathon 2026",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "vercel-build": "cd frontend && npm install && npm run build"
+  }
+}

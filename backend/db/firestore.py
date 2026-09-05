@@ -35,13 +35,27 @@ def get_db():
         raise RuntimeError("firebase_admin is not installed. Run: pip install firebase-admin")
 
     if not firebase_admin._apps:
-        project_id = os.getenv("FIRESTORE_PROJECT_ID")
+        cred_json = os.getenv("FIREBASE_CREDENTIALS_JSON") or os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY")
         cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
-        if cred_path and os.path.exists(cred_path):
+        cred = None
+        if cred_json:
+            import json
+            try:
+                cred_dict = json.loads(cred_json)
+                cred = credentials.Certificate(cred_dict)
+            except Exception:
+                import base64
+                cred_dict = json.loads(base64.b64decode(cred_json).decode("utf-8"))
+                cred = credentials.Certificate(cred_dict)
+        elif cred_path and os.path.exists(cred_path):
             cred = credentials.Certificate(cred_path)
         else:
-            cred = credentials.ApplicationDefault()
+            local_fallback = os.path.join(os.getcwd(), "rev-gaurd-firebase-adminsdk-fbsvc-6a7b4f0363.json")
+            if os.path.exists(local_fallback):
+                cred = credentials.Certificate(local_fallback)
+            else:
+                cred = credentials.ApplicationDefault()
 
         firebase_admin.initialize_app(cred, {"projectId": project_id})
 

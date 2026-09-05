@@ -29,9 +29,9 @@ SHOT 01: LOGO & IDENTITY
 ```
 
 * **Display / Visual Direction:**
-  * **Screen:** Full screen display of the RevGuard Logo and branding banner.
-  * **Visuals:** High-contrast, clean neo-brutalist identity showing the ⚡ emblem, *"RevGuard"*, and the subtitle: *"BOUNDED AI REVENUE RECOVERY // RAZORPAY BUILDATHON 2026"*.
-  * **Camera / Action:** Steady, crisp visual presentation; smooth transition to browser.
+  * **Screen:** Full screen display of the 16:9 opening banner image: [`revguard_opening_banner.jpg`](file:///d:/RazorPayHackathon/docs/revguard_opening_banner.jpg) (also accessible at `/revguard_opening_banner.jpg`).
+  * **Visuals:** High-contrast, clean neo-brutalist identity showing the ⚡ shield emblem, *"RevGuard"*, *"RAZORPAY BUILDATHON 2026"* badge, and tagline: *"Turn Silent Subscription Failures Into Retained Revenue"*.
+  * **Camera / Action:** Hold steady on the 16:9 banner for the 15-second opening hook; smooth crossfade transition into the browser landing page.
 * **Duration:** 15 seconds (`0:00 – 0:15`)
 
 **Spoken Script:**
@@ -211,8 +211,9 @@ SHOT 08: CONCLUSION & THANK YOU
 ================================================================================
 ```
 * **Display / Visual Direction:**
-  * **Screen:** Return to the Cockpit or Landing Page hero view with team credits and buildathon badge visible.
-  * **Visual Actions:** Smooth zoom on the dashboard header, displaying live telemetry metrics and the Razorpay Buildathon 2026 emblem.
+  * **Screen:** Full screen display of the 16:9 closing banner image: [`revguard_thankyou_banner.jpg`](file:///d:/RazorPayHackathon/docs/revguard_thankyou_banner.jpg) (also accessible at `/revguard_thankyou_banner.jpg`).
+  * **Visuals:** Matching neo-brutalist closing card showing the ⚡ emblem, *"RevGuard"*, *"Thank You!"*, and *"Questions & Discussion"*.
+  * **Camera / Action:** Transition from docs/cockpit to the Thank You banner for the final 15 seconds as closing remarks are delivered.
 * **Duration:** 15 seconds (`4:45 – 5:00`)
 
 **Spoken Script:**
