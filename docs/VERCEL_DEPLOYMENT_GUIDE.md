@@ -53,28 +53,40 @@ git push origin main
 
 ## Step 3: Configure Environment Variables
 
-In the Vercel project configuration page (under **Environment Variables**), add the following keys:
+### ⚡ Quickest Way: Copy & Paste Your `.env` File!
+
+You don't need to type variables one by one. Vercel supports bulk `.env` pasting:
+
+1. Open your project's local [`.env`](file:///d:/RazorPayHackathon/.env) file.
+2. Select all text (`Ctrl + A`) and copy (`Ctrl + C`). *(We have already embedded `FIREBASE_CREDENTIALS_JSON` inside it!)*
+3. In Vercel's **Environment Variables** section, click into the very first **"Key"** input box and press **`Ctrl + V`**.
+4. Vercel will automatically parse every line into the key-value table instantly!
+5. Click **"Save"** or continue to Deploy.
+
+> [!TIP]
+> Your `.env` already has `FIREBASE_CREDENTIALS_JSON` populated with your service account key. You can safely leave or remove `GOOGLE_APPLICATION_CREDENTIALS` since RevGuard automatically uses `FIREBASE_CREDENTIALS_JSON` in the cloud.
+
+---
+
+### Reference Table (For Manual Check)
 
 | Variable Name | Required? | Description / Example |
 |---|:---:|---|
-| `FIRESTORE_PROJECT_ID` | **Yes** | Your Firebase Project ID (e.g., `rev-gaurd-2026`) |
-| `FIREBASE_CREDENTIALS_JSON` | **Yes** | The **entire contents** of your Firebase Service Account JSON file pasted as a string (see formatting tip below) |
-| `GEMINI_API_KEY` | **Yes** | Google AI Studio API key for Gemini |
-| `GEMINI_MODEL` | No | Default: `gemini-flash-latest` or `gemini-1.5-flash` |
+| `FIRESTORE_PROJECT_ID` | **Yes** | `rev-gaurd` |
+| `FIREBASE_CREDENTIALS_JSON` | **Yes** | Single-line JSON string of service account key (already in your `.env`) |
+| `GEMINI_API_KEY` | **Yes** | Google AI Studio API key |
+| `GEMINI_MODEL` | No | `gemini-flash-latest` |
 | `RAZORPAY_KEY_ID` | **Yes** | Razorpay Test Key ID (`rzp_test_...`) |
 | `RAZORPAY_KEY_SECRET` | **Yes** | Razorpay Test Key Secret |
-| `MESSAGING_PROVIDER` | No | `twilio` (for real WhatsApp) or `mock` (default) |
+| `RAZORPAY_WEBHOOK_SECRET` | No | `revguard_webhook_secret_123` |
+| `MESSAGING_PROVIDER` | No | `twilio` or `mock` |
 | `TWILIO_ACCOUNT_SID` | If Twilio | Twilio Account SID |
 | `TWILIO_AUTH_TOKEN` | If Twilio | Twilio Auth Token |
 | `TWILIO_WHATSAPP_NUMBER` | If Twilio | `whatsapp:+14155238886` |
-| `POLICY_MAX_AMOUNT_AUTO` | No | Default: `1000000` (paise = ₹10,000) |
-| `POLICY_MIN_CONFIDENCE_AUTO`| No | Default: `0.85` |
-| `POLICY_MAX_RETRY_AUTO` | No | Default: `3` |
-
-### 💡 Tip: Formatting `FIREBASE_CREDENTIALS_JSON`
-Open your `rev-gaurd-firebase-adminsdk-*.json` file, copy the entire JSON object `{ "type": "service_account", ... }`, and paste it directly into Vercel's value field. Vercel supports multiline JSON strings seamlessly.
-
-*(Alternative: You can also base64 encode the file content and set `FIREBASE_SERVICE_ACCOUNT_KEY` to the base64 string.)*
+| `TWILIO_TEST_PHONE_OVERRIDE`| If Twilio | e.g. `+917355788131` |
+| `POLICY_MAX_AMOUNT_AUTO` | No | `1000000` (paise = ₹10,000) |
+| `POLICY_MIN_CONFIDENCE_AUTO`| No | `0.85` |
+| `POLICY_MAX_RETRY_AUTO` | No | `3` |
 
 ---
 
