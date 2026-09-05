@@ -3,6 +3,11 @@
   "framework": null,
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/index.py": {
+      "excludeFiles": "{frontend/**,backend/tests/**,docs/**,data/**,evaluation/**,*.json}"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
