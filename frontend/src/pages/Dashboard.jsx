@@ -198,7 +198,7 @@ export default function Dashboard() {
           </div>
           <div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: '800', color: 'var(--color-dark)', letterSpacing: '0.05em' }}>
-              RAZORPAY BUILD-FOR-BHARAT // TRACK 03 EVALUATION GUIDE
+              RAZORPAY BUILDATHON // TRACK 03 EVALUATION GUIDE
             </div>
             <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
               Explore our Problem Taste, Architecture, Bounded Autonomy Matrix & 7 Real Failure Fixes.

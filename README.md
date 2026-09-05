@@ -2,7 +2,7 @@
 
 > AI-powered recovery controller for failed recurring payments and UPI mandate auto-debits.
 
-**Deadline**: 5 September 2026 | **Hackathon**: Razorpay Build-for-Bharat
+**Deadline**: 5 September 2026 | **Hackathon**: Razorpay BUILDATHON
 
 ---
 

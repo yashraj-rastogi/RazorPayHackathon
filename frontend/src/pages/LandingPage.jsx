@@ -45,7 +45,7 @@ export default function LandingPage() {
         <div className="landing-container">
           <div className="hero-pill-badge">
             <span className="hero-pulse-dot" />
-            <span>RAZORPAY BUILD-FOR-BHARAT 2026 // TRACK 03: AI REVENUE RECOVERY</span>
+            <span>RAZORPAY BUILDATHON 2026 // TRACK 03: AI REVENUE RECOVERY</span>
           </div>
 
           <h1 className="hero-headline">
@@ -380,7 +380,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="landing-container footer-sub">
-          <span>Razorpay Build-for-Bharat 2026 // Production MVP</span>
+          <span>Razorpay BUILDATHON 2026 // Production MVP</span>
           <span>Bounded Autonomy Engine v1.0 // 48 Passing Tests</span>
         </div>
       </footer>

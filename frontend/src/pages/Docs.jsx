@@ -18,7 +18,7 @@ export default function Docs() {
       {/* Docs Header */}
       <div className="docs-header">
         <div>
-          <div className="docs-badge">RAZORPAY BUILD-FOR-BHARAT // TRACK 03: AI REVENUE RECOVERY</div>
+          <div className="docs-badge">RAZORPAY BUILDATHON // TRACK 03: AI REVENUE RECOVERY</div>
           <h1 className="docs-title">System Architecture & Evaluation Guide</h1>
           <p className="docs-subtitle">
             Comprehensive technical and operational blueprint of RevGuard: Bounded Autonomy, Event-Driven Ingestion, and Multilingual WhatsApp Recovery.
